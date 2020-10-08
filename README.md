@@ -1,5 +1,7 @@
 # Test shop
 
+### Name: KolymagaUA
+
 ### Theme: Automobiles
 
 #### Branch name format:
