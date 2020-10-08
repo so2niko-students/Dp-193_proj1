@@ -1,9 +1,17 @@
 {
-  "name": "kolymaga-ua",
+  "name": "test-kolymaga-ua",
   "version": "1.0.0",
   "description": "Automobile online market",
   "main": "index.js",
-  "repository": "https://github.com/so2niko/Dp-193_proj1.git",
   "author": "see README.md to find contributors",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": "12.x"
+  },
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
