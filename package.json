@@ -1,0 +1,9 @@
+{
+  "name": "KolymagaUA",
+  "version": "1.0.0",
+  "description": "Automobile online market",
+  "main": "index.js",
+  "repository": "https://github.com/so2niko/Dp-193_proj1.git",
+  "author": "see README.md to find contributors",
+  "license": "MIT"
+}
