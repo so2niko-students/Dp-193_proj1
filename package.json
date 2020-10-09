@@ -2,13 +2,14 @@
   "name": "test-kolymaga-ua",
   "version": "1.0.0",
   "description": "Automobile online market",
-  "main": "webpack.config.js",
+  "main": "index.js",
   "author": "see README.md to find contributors",
   "license": "MIT",
   "engines": {
     "node": "12.x"
   },
   "scripts": {
+    "start": "node ./index.js",
     "webpack-dev-server": "webpack-dev-server",
     "dev": "webpack-dev-server --mode=development",
     "prod": "webpack --mode=production",
@@ -36,5 +37,8 @@
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
