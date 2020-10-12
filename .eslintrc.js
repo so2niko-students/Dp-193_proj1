@@ -4,17 +4,19 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    "airbnb-base",
+    'airbnb-base',
   ],
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 12,
-    sourceType: "module",
+    sourceType: 'module',
   },
   rules: {
-    "semi": ["error", "always"],
-    "quotes": ["error", "double"],
-    "linebreak-style": 0,
-    "eol-last": 0,
-    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
+    semi: ['error', 'always'],
+    quotes: ['error', 'single'],
+    'linebreak-style': 0,
+    'eol-last': 0,
+    'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
+    'import/prefer-default-export': 'off',
   },
 };
