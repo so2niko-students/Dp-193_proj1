@@ -1,32 +1,34 @@
-export class Publisher {
-  constructor() {
-    this.subscribers = {};
+import eventNames from '../config/publisher-events.js'
+
+export default class Publisher{
+  events = {};
+  eventNames = eventNames;
+
+  subscribe = (eventName, callbackFn) => {
+    if(!this.events[eventName]){
+      this.events[eventName] = [];
+    }
+    this.events[eventName].push(callbackFn);
+  };
+
+  unsubscribe = (eventName, callbackFn) => {
+    if(!this.events[eventName]) {
+      this.events[eventName] = [];
+    }
+    this.events[eventName] = this.events[eventName].filter(func => func !== callbackFn)
+  };
+
+  notify = (eventName, data) => {
+    if(!this.events[eventName]){
+      this.events[eventName] = [];
+    }
+    this.events[eventName].forEach(func => func(data));
+  };
+
+  methods = {
+    notify      : this.notify,
+    subscribe   : this.subscribe,
+    events      : this.eventNames
   }
 
-  subscribe = (event, callbackFn) => {
-    if (!this.subscribers[event]) {
-      this.subscribers[event] = [];
-    }
-    this.subscribers[event].push(callbackFn);
-  };
-
-  unsubscribe = (event, callbackFn) => {
-    if (!this.subscribers[event]) {
-      this.subscribers[event] = [];
-    }
-    this.subscribers[event] = this.subscribers[event].filter((func) => func !== callbackFn);
-  };
-
-  notify = (event, data) => {
-    if (!this.subscribers[event]) {
-      this.subscribers[event] = [];
-    }
-    this.subscribers[event].forEach((func) => func(data));
-  };
-
-  getMethods = () => ({
-    subscribe: this.subscribe,
-    unsubscribe: this.unsubscribe,
-    notify: this.notify,
-  });
-}
+};
