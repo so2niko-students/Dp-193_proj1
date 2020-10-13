@@ -6,6 +6,8 @@ const app = express();
 
 const PORT = process.env.PORT || 80;
 
+app.use(express.static(path.join(__dirname)));
+
 app.get("/", (req, res) => {
   if (req.method === "GET") {
     res.writeHead(200, {
@@ -14,7 +16,7 @@ app.get("/", (req, res) => {
 
     if (req.url === "/") {
       fs.readFile(
-        path.join(__dirname, "index.html"),
+        path.join(__dirname, "dist", "index.html"),
         "utf-8",
         (err, content) => {
           if (err) {
@@ -22,7 +24,7 @@ app.get("/", (req, res) => {
           }
 
           res.end(content);
-        }
+        },
       );
     }
   }
