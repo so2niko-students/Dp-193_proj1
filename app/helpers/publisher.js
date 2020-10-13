@@ -15,20 +15,21 @@ export default class Publisher{
     if(!this.events[eventName]) {
       this.events[eventName] = [];
     }
-    this.events[eventName] = this.events[eventName].filter(func => func !== callbackFn)
+    this.events[eventName] = this.events[eventName].filter((func) => func !== callbackFn)
   };
 
   notify = (eventName, data) => {
     if(!this.events[eventName]){
       this.events[eventName] = [];
     }
-    this.events[eventName].forEach(func => func(data));
+    this.events[eventName].forEach((func) => func(data));
   };
 
   methods = {
-    notify      : this.notify,
-    subscribe   : this.subscribe,
-    events      : this.eventNames
+    notify: this.notify,
+    subscribe: this.subscribe,
+    unsubscribe: this.unsubscribe,
+    events: this.eventNames
   }
 
 };
