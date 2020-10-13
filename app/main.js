@@ -1,5 +1,9 @@
-import { Publisher } from './helpers/publisher.js';
-import { TemplateController } from './components/template/template-controller.js';
+import '../cars-gallery.scss'
+
+import ControllerCarsGallery from './components/cars-gallery/controller-cars-gallery.js';
+import Publisher from './helpers/publisher.js';
 
 const publisher = new Publisher();
-const templateController = new TemplateController(publisher.getMethods());
+const carsGallery = new ControllerCarsGallery(publisher.methods);
+
+
