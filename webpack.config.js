@@ -3,7 +3,7 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./app/main.js",
+  entry: ["regenerator-runtime/runtime", "./app/main.js"],
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js",
@@ -19,12 +19,12 @@ module.exports = {
         use: [
           {
             loader: "style-loader",
-          }, 
+          },
           {
-            loader: "css-loader", 
-          }, 
+            loader: "css-loader",
+          },
           {
-            loader: "sass-loader", 
+            loader: "sass-loader",
           },
         ],
       },

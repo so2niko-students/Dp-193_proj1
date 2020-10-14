@@ -3,26 +3,27 @@ import { FilterModel } from './filter-model.js';
 
 export class FilterController {
   constructor() {
-    this.view = new FilterView();
+    this.view = new FilterView(this.handleSubmit);
     this.model = new FilterModel();
 
     this.handleLoad();
   }
 
   handleLoad = async () => {
-    const carsData = await this.model.getData();
+    await this.model.fetchData();
+    const carsData = this.model.getData();
+    const categories = this.model.getCategoriesData(carsData);
 
-    console.log(this.model.getCategoriesData(carsData));
+    this.view.render(categories);
+  };
 
-    // const filters = {
-    //   color: ['black'],
-    //   class: ['J', 'S'],
-    //   'body-type': ['SUV'],
-    //   'engine-capacity': [2000, 3000]
-    // };
-    //
-    // const filteredData = this.model.filterData(carsData, filters);
-    //
-    // console.log(filteredData);
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+    const filterParams = this.model.extractFormData(event);
+    const carsData = this.model.getData();
+    const filtered = this.model.filterData(carsData, filterParams);
+    console.log(filterParams);
+    console.log(filtered);
   };
 }

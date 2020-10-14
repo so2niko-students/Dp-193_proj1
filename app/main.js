@@ -6,3 +6,5 @@ import '../css/filter.scss';
 const publisher = new Publisher();
 const templateController = new TemplateController(publisher.getMethods());
 const filterController = new FilterController(publisher.getMethods());
+
+

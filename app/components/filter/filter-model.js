@@ -1,68 +1,71 @@
 export class FilterModel {
-  url = 'http://www.json-generator.com/api/json/get/ctRVcUtcfC?indent=2';
+  data = [];
 
-  getData = async () => {
+  url = 'http://localhost:8080/base/database.json';
+
+  ignoredCategories = ['id', 'photoUrl', 'model', 'price', 'consumption'];
+
+  fetchData = async () => {
     const response = await fetch(this.url);
-
-    return response.json();
+    this.data = await response.json();
   };
 
-  getCategoriesData = (carsData) => {
-    const ignoredCategories = ['id', 'photoUrl'];
+  getData = () => this.data;
 
-    return Object.keys(carsData[0]).reduce((categories, key) => {
-      if (!ignoredCategories.includes(key)) {
-        const propertyValues = carsData.map((car) => car[key]);
-        const uniqueValues = [...new Set(propertyValues)];
+  getCategoriesData = (carsData) => Object.keys(carsData[0]).map((key) => {
+    const propertyValues = carsData.map((car) => car[key]);
 
-        return {
-          ...categories,
-          [key]: Array.isArray(uniqueValues) ? [...new Set(uniqueValues.flat(1))] : uniqueValues
-        };
-      } else {
-        return categories;
-      }
-    }, {});
-  };
+    return {
+      name: key,
+      values: [...new Set(propertyValues.flat(1))],
+    };
+  }).filter((category) => !this.ignoredCategories.includes(category.name));
 
-  filterData = (cardData, filterParams) => {
-    return cardData.filter((car) => {
-
-      return Object.keys(filterParams).reduce((filterResult, key) => {
-        if (Array.isArray(car[key])) {
-          const combinedValues = [...filterParams[key], ...car[key]];
-          const uniqueValues = [...new Set(combinedValues)];
-
-          if (uniqueValues.length === combinedValues.length) {
-            return false;
-          }
-        } else if (typeof filterParams[key][0] === 'string') {
-            console.log('string', filterParams[key][0]);
-            if (!filterParams[key].includes(car[key])) {
-              return false
-            }
-        } else if (typeof filterParams[key][0] === 'number') {
-          console.log('number', filterParams[key][0]);
-          return false;
+  extractFormData = (event) => [...event.target.querySelectorAll('input')].reduce((selectedProperties, formElement) => {
+    if (formElement.type !== 'submit') {
+      if (formElement.type === 'checkbox') {
+        if (formElement.checked) {
+          return {
+            ...selectedProperties,
+            [formElement.dataset.category]: [
+              ...selectedProperties[formElement.dataset.category] || [],
+              formElement.name,
+            ],
+          };
         }
-        return true;
-      }, true);
+      } else {
+        return {
+          ...selectedProperties,
+          [formElement.dataset.category]: [
+            ...selectedProperties[formElement.dataset.category] || [],
+            Number(formElement.value),
+          ],
+        };
+      }
+    }
+    return selectedProperties;
+  }, {});
 
-      // for (const key in filterParams) {
-      //   if (filterParams.hasOwnProperty(key)) {
-      //     if (Array.isArray(car[key])) {
-      //       const combinedValues = [...filterParams[key], ...car[key]];
-      //       const uniqueValues = [...new Set(combinedValues)];
-      //
-      //       if (uniqueValues.length === combinedValues.length) {
-      //         return false;
-      //       }
-      //     } else if (!filterParams[key].includes(car[key])) {
-      //       return false
-      //     }
-      //   }
-      // }
-      // return true;
+  filterData = (carsData, filterParams) => carsData.filter((car) => {
+    let flag = true;
+
+    Object.keys(filterParams).forEach((key) => {
+      if (Array.isArray(car[key])) {
+        const arraysCrossing = car[key].filter((value) => filterParams[key].includes(value));
+
+        if (!arraysCrossing.length) {
+          flag = false;
+        }
+      } else if (typeof car[key] === 'string') {
+        if (!filterParams[key].includes(car[key])) {
+          flag = false;
+        }
+      } else if (typeof car[key] === 'number') {
+        if (!(car[key] >= filterParams[key][0] && car[key] <= filterParams[key][1])) {
+          flag = false;
+        }
+      }
     });
-  };
+    return flag;
+  })
 }
