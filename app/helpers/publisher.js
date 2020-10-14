@@ -1,32 +1,35 @@
-export class Publisher {
-  constructor() {
-    this.subscribers = {};
-  }
+import eventNames from '../config/publisher-events.js'
 
-  subscribe = (event, callbackFn) => {
-    if (!this.subscribers[event]) {
-      this.subscribers[event] = [];
+export default class Publisher{
+  events = {};
+  eventNames = eventNames;
+
+  subscribe = (eventName, callbackFn) => {
+    if(!this.events[eventName]){
+      this.events[eventName] = [];
     }
-    this.subscribers[event].push(callbackFn);
+    this.events[eventName].push(callbackFn);
   };
 
-  unsubscribe = (event, callbackFn) => {
-    if (!this.subscribers[event]) {
-      this.subscribers[event] = [];
+  unsubscribe = (eventName, callbackFn) => {
+    if(!this.events[eventName]) {
+      this.events[eventName] = [];
     }
-    this.subscribers[event] = this.subscribers[event].filter((func) => func !== callbackFn);
+    this.events[eventName] = this.events[eventName].filter((func) => func !== callbackFn)
   };
 
-  notify = (event, data) => {
-    if (!this.subscribers[event]) {
-      this.subscribers[event] = [];
+  notify = (eventName, data) => {
+    if(!this.events[eventName]){
+      this.events[eventName] = [];
     }
-    this.subscribers[event].forEach((func) => func(data));
+    this.events[eventName].forEach((func) => func(data));
   };
 
-  getMethods = () => ({
+  methods = {
+    notify: this.notify,
     subscribe: this.subscribe,
     unsubscribe: this.unsubscribe,
-    notify: this.notify,
-  });
-}
+    events: this.eventNames
+  }
+
+};
