@@ -1,7 +1,9 @@
+@import '../../css/variables';
+
 .header {
   width: 100%;
   z-index: 100;
-  background: #DEEAF4;
+  background: $backgroundColor;
 
   &__search{
     margin-left: 50%;
@@ -10,11 +12,14 @@
 
   &__link{
     font-size: 24px;
+    font-family: $mainFont;
+    color: $mainColor;
   }
 
   &__input{
     width: 220px;
     font-size: 18px;
+    font-family: $mainFont;
   }
 
   .search-btn{
