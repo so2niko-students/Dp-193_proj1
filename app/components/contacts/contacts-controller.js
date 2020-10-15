@@ -1,23 +1,20 @@
-// eslint-disable-next-line import/extensions
-import { ContactsModel } from './contacts-model.js';
-// eslint-disable-next-line import/extensions
-import { ContactsView } from './contacts-view.js';
+import ContactsModel from './contacts-model.js';
+import ContactsView from './contacts-view.js';
 
-export class ContactsController {
-  constructor({ subscribe, unsubscribe, notify }) {
+export default class ContactsController {
+  constructor({ subscribe, events }) {
     this.view = new ContactsView();
     this.model = new ContactsModel();
 
     this.subscribe = subscribe;
-    this.unsubscribe = unsubscribe;
-    this.notify = notify;
+    this.events = events;
 
-    this.onLoad();
+    this.subscribe(this.events.SHOW_CONTACTS, this.view.render);
+    
+    // this.onLoad();
   }
 
-  onLoad = () => {
-    const title = this.model.getTitle();
-
-    this.view.render(title);
-  };
+  // onLoad = () => {
+  //   this.view.render();
+  // };
 }

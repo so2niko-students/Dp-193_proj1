@@ -1,5 +1,3 @@
-export class ContactsModel {
-  title = 'Contacts';
+export default class ContactsModel {
 
-  getTitle = () => this.title;
 }

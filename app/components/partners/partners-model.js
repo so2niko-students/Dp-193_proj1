@@ -1,4 +1,4 @@
-export class PartnersModel {
+export default class PartnersModel {
   title = 'Partners';
 
   getTitle = () => this.title;

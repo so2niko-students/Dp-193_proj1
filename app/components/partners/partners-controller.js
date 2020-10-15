@@ -1,23 +1,22 @@
 // eslint-disable-next-line import/extensions
-import { PartnersModel } from './partners-model.js';
+import PartnersModel from './partners-model.js';
 // eslint-disable-next-line import/extensions
-import { PartnersView } from './partners-view.js';
+import PartnersView from './partners-view.js';
 
-export class PartnersController {
-  constructor({ subscribe, unsubscribe, notify }) {
+export default class PartnersController {
+  constructor({ subscribe, events }) {
     this.view = new PartnersView();
     this.model = new PartnersModel();
 
     this.subscribe = subscribe;
-    this.unsubscribe = unsubscribe;
-    this.notify = notify;
+    this.events = events;
+
+    this.subscribe(this.events.SHOW_PARTNERS, this.view.render);
 
     this.onLoad();
   }
 
   onLoad = () => {
-    const title = this.model.getTitle();
-
-    this.view.render(title);
+    this.view.render();
   };
 }

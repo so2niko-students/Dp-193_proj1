@@ -1,0 +1,18 @@
+@import "../../css/main.scss";
+
+section {
+  background-color: map-get($colors, backgroundColor);
+  font-family: map-get($fonts, mainFont);
+}
+h3 {
+  font-family: map-get($fonts, addFont);
+  color: map-get($colors, mainColor);
+}
+.callMeBack {
+  position: fixed;
+  z-index: 100;
+  bottom: 120px;
+  right: 10%;
+  background-color: map-get($colors, addColor);
+  border-radius: 50%;
+}

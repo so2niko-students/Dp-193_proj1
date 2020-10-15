@@ -1,6 +1,4 @@
-// eslint-disable-next-line import/extensions
 import { TemplateModel } from './template-model.js';
-// eslint-disable-next-line import/extensions
 import { TemplateView } from './template-view.js';
 
 export class TemplateController {

@@ -1,0 +1,13 @@
+@import "../../css/main.scss";
+
+section {
+  font-family: map-get($fonts, mainFont);
+
+  & div {
+    max-width: 1200px;
+  }
+}
+h2 {
+  color: map-get($colors, mainColor);
+}
+
