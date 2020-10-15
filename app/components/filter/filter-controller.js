@@ -2,16 +2,21 @@ import { FilterView } from './filter-view.js';
 import { FilterModel } from './filter-model.js';
 
 export class FilterController {
-  constructor() {
-    this.view = new FilterView(this.handleSubmit);
+  constructor({ subscribe, notify, events }) {
     this.model = new FilterModel();
+    this.view = new FilterView(this.handleSubmit, this.model.formatName);
 
-    this.handleLoad();
+    this.subscribe = subscribe;
+    this.notify = notify;
+    this.events = events;
+
+    this.subscribe(this.events.LOAD_DATA, this.handleLoad);
+    this.subscribe(this.events.SHOW_FILTER, this.view.showFilter);
   }
 
-  handleLoad = async () => {
-    await this.model.fetchData();
-    const carsData = this.model.getData();
+  handleLoad = (carsData) => {
+    this.model.setData(carsData);
+
     const categories = this.model.getCategoriesData(carsData);
 
     this.view.render(categories);
@@ -22,8 +27,11 @@ export class FilterController {
 
     const filterParams = this.model.extractFormData(event);
     const carsData = this.model.getData();
-    const filtered = this.model.filterData(carsData, filterParams);
-    console.log(filterParams);
-    console.log(filtered);
+    const filteredData = this.model.filterData(carsData, filterParams);
+
+    console.log(filteredData);
+
+    this.view.hideFilter();
+    this.notify(this.events.FILTERED_DATA, filteredData);
   };
 }

@@ -1,25 +1,30 @@
+import './filter.scss';
+
 export class FilterView {
   rootNode = document.getElementById('root');
 
-  constructor(handleSubmit) {
+  constructor(handleSubmit, formatName) {
     this.handleSubmit = handleSubmit;
+    this.formatName = formatName;
   }
 
   render = (data) => {
     this.rootNode.insertAdjacentHTML('afterbegin', `
       <div class="modal-container">
-        <form class="filter col-md-6">
-          <ul class="filter__categories">
-            ${this.renderCategories(data)}
-          </ul>
-          <div class="filter__controls">
-            <input class="filter__button filter__close" value="Close" type="button">
-            <div>
-              <input class="filter__button filter__reset" value="Reset" type="reset">
-              <input class="filter__button filter__submit" value="Search" type="submit">
+        <div class="filter-wrapper">
+          <form class="filter col-md-6">
+            <ul class="filter__categories">
+              ${this.renderCategories(data)}
+            </ul>
+            <div class="filter__controls">
+              <input class="filter__button filter__close" value="Close" type="button">
+              <div>
+                <input class="filter__button filter__reset" value="Reset" type="reset">
+                <input class="filter__button filter__submit" value="Search" type="submit">
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     `);
 
@@ -48,11 +53,23 @@ export class FilterView {
 
     if (typeof values[0] === 'number') {
       return `
-        <label class="filter__options-label">Min
-          <input type="number" value="${Math.min(...values)}" class="filter__options-input" data-category="${name}">
+        <label class="filter__options-label filter__options-label-number">From
+          <input 
+            type="number" 
+            placeholder="${Math.round(Math.min(...values))}"
+            value="${Math.round(Math.min(...values))}" 
+            class="filter__options-input" 
+            data-category="${name}"
+          >
         </label>
-        <label class="filter__options-label">Max 
-          <input type="number" value="${Math.max(...values)}" class="filter__options-input" data-category="${name}">
+        <label class="filter__options-label filter__options-label-number">To
+          <input 
+            type="number" 
+            placeholder="${Math.round(Math.max(...values))}"
+            value="${Math.round(Math.max(...values))}" 
+            class="filter__options-input" 
+            data-category="${name}"
+          >
         </label>
       `;
     }
@@ -66,8 +83,6 @@ export class FilterView {
   formatCategoryName = (name) => this.formatName(name, '-');
 
   formatOptionName = (name) => this.formatName(name, ' ');
-
-  formatName = (name, splitter) => name.split(splitter).map((str) => str.charAt(0).toUpperCase() + str.slice(1)).join(' ');
 
   setActiveItem = (event) => {
     const categoryNode = event.target.closest('.filter__categories-item');
@@ -88,12 +103,13 @@ export class FilterView {
   };
 
   showFilter = () => {
-    this.filterForm.style.display = 'block';
+    this.filterForm.parentNode.style.display = 'flex';
     this.modalContainer.style.display = 'block';
   };
 
   hideFilter = () => {
-    this.filterForm.style.display = 'none';
+    this.removeActiveItem();
+    this.filterForm.parentNode.style.display = 'none';
     this.modalContainer.style.display = 'none';
   };
 }

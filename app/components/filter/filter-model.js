@@ -1,13 +1,10 @@
 export class FilterModel {
   data = [];
 
-  url = 'http://localhost:8080/base/database.json';
+  ignoredCategories = ['id', 'photoUrl', 'model'];
 
-  ignoredCategories = ['id', 'photoUrl', 'model', 'price', 'consumption'];
-
-  fetchData = async () => {
-    const response = await fetch(this.url);
-    this.data = await response.json();
+  setData = (data) => {
+    this.data = data;
   };
 
   getData = () => this.data;
@@ -46,26 +43,25 @@ export class FilterModel {
     return selectedProperties;
   }, {});
 
-  filterData = (carsData, filterParams) => carsData.filter((car) => {
-    let flag = true;
-
-    Object.keys(filterParams).forEach((key) => {
+  filterData = (carsData, filterParams) => carsData
+    .filter((car) => Object.keys(filterParams).reduce((isProper, key) => {
       if (Array.isArray(car[key])) {
         const arraysCrossing = car[key].filter((value) => filterParams[key].includes(value));
 
         if (!arraysCrossing.length) {
-          flag = false;
+          return false;
         }
       } else if (typeof car[key] === 'string') {
         if (!filterParams[key].includes(car[key])) {
-          flag = false;
+          return false;
         }
       } else if (typeof car[key] === 'number') {
         if (!(car[key] >= filterParams[key][0] && car[key] <= filterParams[key][1])) {
-          flag = false;
+          return false;
         }
       }
-    });
-    return flag;
-  })
+      return isProper;
+    }, true));
+
+  formatName = (name, splitter) => name.split(splitter).map((str) => str.charAt(0).toUpperCase() + str.slice(1)).join(' ');
 }
