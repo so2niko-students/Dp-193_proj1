@@ -1,4 +1,4 @@
-export const publisherEvents = {
+const publisherEvents = {
   LOAD_DATA: 'LOAD_DATA',
   SEARCH_MODEL: 'SEARCH_MODEL',
   FILTERED_DATA: 'FILTERED_DATA',
@@ -8,3 +8,5 @@ export const publisherEvents = {
   SHOW_PARTNERS: 'SHOW_PARTNERS',
   SHOW_CONTACTS: 'SHOW_CONTACTS',
 };
+
+export default publisherEvents;
