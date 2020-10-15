@@ -1,19 +1,50 @@
 export default class ViewCarsGallery {
+  mainContainer = document.querySelector('.main');
   
-  container = document.querySelector('.cars-gallery');
-  
+  renderStructure(handleSort, handleShowAll, handleCarDetails, handleLoadMore){
+    this.mainContainer.insertAdjacentHTML('beforeend', `
+    <div class="container-filter pt-5 d-flex justify-content-center">
+      <div class="container-filter__showall">
+        <span style="cursor: default;">Category</span>
+        <button type="button" class="container-filter__showall-btn border-0 text-primary">ALL</button>
+      </div>
+      <div class="container-filter__sort">
+        <button type="button" class="container-filter__sort-btn">Filter</button>
+      </div>
+    </div>
+    <div class="cars-gallery d-flex justify-content-around flex-wrap text-center">
+        
+    </div>
+    <div class="container-loadmore mx-auto mt-5">
+      <button type="button" class="container-loadmore__btn load-more w-100 border-0">Load more...</button>
+    </div>
+    
+  `);
+
+    const buttonFilter = document.querySelector('.container-filter__sort-btn');
+    const buttonAll = document.querySelector('.container-filter__showall-btn');
+    const buttonLoadMore = document.querySelector('.container-loadmore');
+
+    this.carsGallery = document.querySelector('.cars-gallery');
+
+    buttonFilter.addEventListener('click', handleSort );
+    buttonAll.addEventListener('click', handleShowAll);
+    buttonLoadMore.addEventListener('click', handleLoadMore);
+
+    this.carsGallery.addEventListener('click', handleCarDetails);
+  }
+
   render = (data) => {
-    const cars = data.filter(car => car.id < 10);
-    const carsGallery = cars.map(car => `
-      <div class="cars-gallery__wrapper" data-id="${car.id}">
-        <img class="cars-gallery__img" src="${car.photoUrl[0]}"></img>
-        <h2 class="cars-gallery__brand">${car.brand}</h2>
-        <h3 class="cars-gallery__model">${car.model}</h3>
-        <p class="cars-gallery__price">от $${car.price}</p>
-        <button class="cars-gallery__btn-popup " type="button">More information</button>
+    const cars = data.map(car => `
+      <div class="cars-gallery__car">
+        <img class="cars-gallery__car-img" src="${car.photoUrl[0]}"></img>
+        <h2 class="cars-gallery__car-brand pt-3 h2 font-weight-bold">${car.brand}</h2>
+        <span class="cars-gallery__car-model">${car.model}</span>
+        <p class="cars-gallery__car-price">from <b>$${car.price}</b></p>
+        <button class="cars-gallery__car-details-btn border-0 text-primary" type="button" data-id="${car.id}">More information</button>
       </div>
     `);
-    
-    this.container.innerHTML = carsGallery.join('');
+
+    this.carsGallery.innerHTML = cars.join('');
   }
 }

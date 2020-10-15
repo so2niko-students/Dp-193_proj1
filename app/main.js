@@ -1,4 +1,4 @@
-import '../cars-gallery.scss'
+import '../cars-gallery.scss';
 
 import ControllerCarsGallery from './components/cars-gallery/controller-cars-gallery.js';
 import Publisher from './helpers/publisher.js';
