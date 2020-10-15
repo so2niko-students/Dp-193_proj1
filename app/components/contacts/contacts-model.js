@@ -1,5 +1,5 @@
 export class ContactsModel {
-  title = '';
+  title = 'Contacts';
 
   getTitle = () => this.title;
 }

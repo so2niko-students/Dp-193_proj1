@@ -1,5 +1,5 @@
 export class PartnersModel {
-  title = '';
+  title = 'Partners';
 
   getTitle = () => this.title;
 }
