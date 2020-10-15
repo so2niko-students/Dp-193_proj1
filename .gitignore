@@ -1,5 +1,5 @@
 /node_modules
 .idea
 .vscode
-components/
-partners/
+components
+partners
