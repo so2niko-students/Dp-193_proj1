@@ -29,7 +29,7 @@ export default class Publisher{
     notify: this.notify,
     subscribe: this.subscribe,
     unsubscribe: this.unsubscribe,
-    events: this.eventNames,
+    events: this.eventNames
   }
 
 };

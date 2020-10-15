@@ -1,8 +1,11 @@
+@import '../../css/variables';
+
 .main {
   padding-bottom: 400px;
-  background-color: #DEEAF4;
-  font-family: 'Fira Sans';
+  background-color: $backgroundColor;
+  font-family: $mainFont;
   font-size: 30px;
+  color: $mainColor;
 }
 
 .container-filter__showall-btn {

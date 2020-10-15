@@ -1,7 +1,16 @@
+import './cars-gallery.scss';
+
 export default class ViewCarsGallery {
   mainContainer = document.querySelector('.main');
+
+  constructor(handleSort, handleShowAll, handleCarDetails, handleLoadMore) {
+    this.handleSort = handleSort;
+    this.handleShowAll = handleShowAll;
+    this.handleCarDetails = handleCarDetails;
+    this.handleLoadMore = handleLoadMore;
+  }
   
-  renderStructure(handleSort, handleShowAll, handleCarDetails, handleLoadMore){
+  renderStructure(){
     this.mainContainer.insertAdjacentHTML('beforeend', `
     <div class="container-filter pt-5 d-flex justify-content-center">
       <div class="container-filter__showall">
@@ -20,18 +29,7 @@ export default class ViewCarsGallery {
     </div>
     
   `);
-
-    const buttonFilter = document.querySelector('.container-filter__sort-btn');
-    const buttonAll = document.querySelector('.container-filter__showall-btn');
-    const buttonLoadMore = document.querySelector('.container-loadmore');
-
-    this.carsGallery = document.querySelector('.cars-gallery');
-
-    buttonFilter.addEventListener('click', handleSort );
-    buttonAll.addEventListener('click', handleShowAll);
-    buttonLoadMore.addEventListener('click', handleLoadMore);
-
-    this.carsGallery.addEventListener('click', handleCarDetails);
+    this.addEvents();
   }
 
   render = (data) => {
@@ -44,7 +42,20 @@ export default class ViewCarsGallery {
         <button class="cars-gallery__car-details-btn border-0 text-primary" type="button" data-id="${car.id}">More information</button>
       </div>
     `);
-
     this.carsGallery.innerHTML = cars.join('');
+  }
+
+  addEvents = () => {
+    const buttonFilter = document.querySelector('.container-filter__sort-btn');
+    buttonFilter.addEventListener('click', this.handleSort );
+
+    const buttonAll = document.querySelector('.container-filter__showall-btn');
+    buttonAll.addEventListener('click', this.handleShowAll);
+
+    const buttonLoadMore = document.querySelector('.container-loadmore');
+    buttonLoadMore.addEventListener('click', this.handleLoadMore);
+
+    this.carsGallery = document.querySelector('.cars-gallery');
+    this.carsGallery.addEventListener('click', this.handleCarDetails);
   }
 }
