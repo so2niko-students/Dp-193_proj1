@@ -11,6 +11,7 @@ export class HeaderController {
     this.events = events;
 
     this.subscribe(this.events.LOAD_DATA, this.handleLoadData);
+    this.subscribe(this.events.FILTERED_DATA, this.handleLoadData);
 
     this.onLoad();
   }
@@ -43,9 +44,9 @@ export class HeaderController {
   };
 
   getMethods = () => ({
-    contacts: this.handleContactsClick,
-    partners: this.handlePartnersClick,
-    home: this.handleLogoClick,
-    search: this.handleSearch,
+    showContacts: this.handleContactsClick,
+    showPartners: this.handlePartnersClick,
+    showGallery: this.handleLogoClick,
+    handleSearch: this.handleSearch,
   });
 }

@@ -3,11 +3,11 @@ import './header-styles.scss';
 export class HeaderView {
     headerElem = document.querySelector('.header');
 
-    constructor({ contacts, partners, home, search }) {
-      this.contacts = contacts;
-      this.partners = partners;
-      this.home = home;
-      this.search = search;
+    constructor({ showContacts, showPartners, showGallery, handleSearch }) {
+      this.showContacts = showContacts;
+      this.showPartners = showPartners;
+      this.showGallery = showGallery;
+      this.handleSearch = handleSearch;
     }
 
     render = () => {
@@ -53,15 +53,15 @@ export class HeaderView {
 
     addEvents = () => {
       const filterElem = document.querySelector('.header__search');
-      filterElem.addEventListener('change', this.search);
+      filterElem.addEventListener('change', this.handleSearch);
 
       const logoElem = document.querySelector('.header__logo');
-      logoElem.addEventListener('click', this.home);
+      logoElem.addEventListener('click', this.showGallery);
 
       const partnersElem = document.querySelector('#partners');
-      partnersElem.addEventListener('click', this.partners);
+      partnersElem.addEventListener('click', this.showPartners);
 
       const contactsElem = document.querySelector('#contacts');
-      contactsElem.addEventListener('click', this.contacts);
+      contactsElem.addEventListener('click', this.showContacts);
     }
 }
