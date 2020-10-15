@@ -1,0 +1,25 @@
+.header {
+  width: 100%;
+  z-index: 100;
+  background: #DEEAF4;
+
+  &__search{
+    margin-left: 50%;
+    width: 300px;
+  }
+
+  &__link{
+    font-size: 24px;
+  }
+
+  &__input{
+    width: 220px;
+    font-size: 18px;
+  }
+
+  .search-btn{
+    height: 38px;
+  }
+}
+
+
