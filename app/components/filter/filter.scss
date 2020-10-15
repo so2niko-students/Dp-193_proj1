@@ -6,6 +6,7 @@
 }
 
 .modal-container {
+  display: none;
   position: absolute;
   z-index: 0;
   left: 0;
@@ -13,7 +14,6 @@
   height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
   justify-content: center;
   padding-top: 10%;
 
@@ -27,7 +27,7 @@
     // TODO Remove this line
     min-height: 40vh;
 
-    .filter__categories {
+    &__categories {
       position: relative;
       list-style: none;
       display: flex;
