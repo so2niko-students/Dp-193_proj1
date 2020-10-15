@@ -1,12 +1,12 @@
 // eslint-disable-next-line import/extensions
-import { TemplateModel } from './template-model.js';
+import { PartnersModel } from './partners-model.js';
 // eslint-disable-next-line import/extensions
-import { TemplateView } from './template-view.js';
+import { PartnersView } from './partners-view.js';
 
-export class TemplateController {
+export class PartnersController {
   constructor({ subscribe, unsubscribe, notify }) {
-    this.view = new TemplateView();
-    this.model = new TemplateModel();
+    this.view = new PartnersView();
+    this.model = new PartnersModel();
 
     this.subscribe = subscribe;
     this.unsubscribe = unsubscribe;

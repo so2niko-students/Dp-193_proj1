@@ -1,5 +1,5 @@
 export class TemplateModel {
-  title = 'This is senseless component!';
+  title = 'This is senseless component';
 
   getTitle = () => this.title;
 }

@@ -1,6 +1,9 @@
 import { Publisher } from './helpers/publisher.js';
-import { TemplateController } from './components/template/template-controller.js';
+import { ContactsController } from './components/contacts/contacts-controller.js'
+import { PartnersController } from './components/parners/partners-controller.js';
+
 import './css/main.scss';
 
 const publisher = new Publisher();
-const templateController = new TemplateController(publisher.getMethods());
+const contactsController = new ContactsController(publisher.getMethods());
+const partnersController = new PartnersController(publisher.getMethods());
