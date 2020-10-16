@@ -42,7 +42,7 @@ export class ViewCarsGallery {
         <img class="cars-gallery__car-img" src="${photoUrl[0]}"></img>
         <h2 class="cars-gallery__car-brand pt-3 h2 font-weight-bold">${brand}</h2>
         <span class="cars-gallery__car-model">${model}</span>
-        <p class="cars-gallery__car-price">from <b>$${price}</b></p>
+        <p class="cars-gallery__car-price">from <b>₴${price}</b></p>
         <button class="cars-gallery__car-details-btn border-0 text-primary" type="button" data-id="${id}">More information</button>
       </div>
     `
