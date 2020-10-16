@@ -1,11 +1,12 @@
 export class ModelCarsGallery {
+  link = '../../../base/database.json';
   cars = [];
   filteredCars = [];
   page = 1;
   size = 9;
 
   loadCars(handleLoadCars) {
-    fetch('../../../base/database.json')
+    fetch(this.link)
       .then(req => req.json())
       .then(reqData => {
         this.cars = reqData;
