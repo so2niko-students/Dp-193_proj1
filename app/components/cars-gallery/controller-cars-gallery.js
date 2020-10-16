@@ -1,7 +1,7 @@
-import ModelCarsGallery from './model-cars-gallery.js';
-import ViewCarsGallery from './view-cars-gallery.js';
+import { ModelCarsGallery } from './model-cars-gallery.js';
+import { ViewCarsGallery } from './view-cars-gallery.js';
 
-export default class ControllerCarsGallery {
+export class ControllerCarsGallery {
   constructor({notify, events, subscribe}) {
     this.model = new ModelCarsGallery();
     this.view = new ViewCarsGallery(this.handleFilterButton, this.handleShowAll, this.handleCarDetails, this.handleLoadMore);
