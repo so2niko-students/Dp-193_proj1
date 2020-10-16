@@ -36,7 +36,7 @@ export class ViewCarsGallery {
     this.carsGallery.innerHTML = data.map(this.renderCars).join('');
   }
 
-  renderCars = ({photoUrl, brand, model, price, id}) => {
+  renderCar = ({photoUrl, brand, model, price, id}) => {
     return `
       <div class="cars-gallery__car">
         <img class="cars-gallery__car-img" src="${photoUrl[0]}"></img>
