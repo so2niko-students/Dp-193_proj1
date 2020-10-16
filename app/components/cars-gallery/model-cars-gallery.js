@@ -1,4 +1,4 @@
-export default class ModelCarsGallery {
+export class ModelCarsGallery {
   cars = [];
   filteredCars = [];
   page = 1;
