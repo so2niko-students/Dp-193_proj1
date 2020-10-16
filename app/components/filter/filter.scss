@@ -1,8 +1,4 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@import '../../css/main.scss';
 
 .modal-container {
   display: none;
@@ -21,12 +17,11 @@
 }
 
 .filter {
-  margin-top: 10%;
   position: fixed;
   z-index: 100;
   background-color: #C4C9D2;
   border-radius: 50px;
-  color: #E4EEF6;
+  color: map_get($colors, backgroundColor);
   padding: 30px;
 
   &__categories {
@@ -44,12 +39,12 @@
       width: 3px;
       border-radius: 1px;
       height: 80%;
-      background-color: #1F2736;
+      background-color: map_get($colors, mainColor);
     }
   }
 
   &__categories-item {
-    background-color: #1F2736;
+    background-color: map_get($colors, mainColor);
     border-radius: 11px;
     width: 45%;
     padding: 3px 10px;
@@ -67,7 +62,7 @@
       right: 0;
       top: 7px;
       border: 8px solid transparent;
-      border-left: 15px solid #E4EEF6;
+      border-left: 15px solid map_get($colors, backgroundColor);
     }
   }
 
@@ -107,7 +102,7 @@
     width: 100%;
     position: absolute;
     z-index: 10;
-    background-color: #1F2736;
+    background-color: map_get($colors, mainColor);
     left: 0;
     border-radius: 0 0 11px 11px;
   }
@@ -131,14 +126,14 @@
 
   &__options-input {
     border-radius: 5px;
-    background-color: #E4EEF6;
+    background-color: map_get($colors, backgroundColor);
     border: none;
     padding: 0 5px;
     transition: .1s;
 
     &:focus {
       outline: none;
-      box-shadow: 0 0 10px #4B80E0;
+      box-shadow: 0 0 10px map_get($colors, addColor);
     }
   }
 
@@ -169,19 +164,19 @@
     }
 
     &.filter__submit {
-      color: #E6EFF6;
-      background-color: #518BF3;
+      color: map_get($colors, textMainColor);
+      background-color: map_get($colors, addColor);
       margin-left: 20px;
     }
 
     &.filter__reset {
-      color: #E6EFF6;
+      color: map_get($colors, textMainColor);
       background-color: #5F6B81;
     }
 
     &.filter__close {
-      background-color: #1F2736;
-      color: #E6EFF6;
+      background-color: map_get($colors, mainColor);
+      color: map_get($colors, textMainColor);
     }
   }
 }

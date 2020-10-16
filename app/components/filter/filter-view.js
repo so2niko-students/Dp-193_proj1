@@ -1,58 +1,55 @@
 import './filter.scss';
 
 export class FilterView {
-  rootNode = document.getElementById('root');
+  modalContainer = document.querySelector('.modal-window');
 
   constructor(handleSubmit, formatName) {
     this.handleSubmit = handleSubmit;
     this.formatName = formatName;
   }
 
-  render = (data) => {
-    this.rootNode.insertAdjacentHTML('afterbegin', `
-      <div class="modal-container">
-        <div class="filter-wrapper">
-          <form class="filter col-md-6">
-            <ul class="filter__categories">
-              ${this.renderCategories(data)}
-            </ul>
-            <div class="filter__controls">
-              <input class="filter__button filter__close" value="Close" type="button">
-              <div>
-                <input class="filter__button filter__reset" value="Reset" type="reset">
-                <input class="filter__button filter__submit" value="Search" type="submit">
-              </div>
-            </div>
-          </form>
+  renderStructure = () => {
+    this.modalContainer.insertAdjacentHTML('afterbegin', `
+      <form class="filter col-md-6">
+        <ul class="filter__categories"></ul>
+        <div class="filter__controls">
+          <input class="filter__button filter__close" value="Close" type="button">
+          <div>
+            <input class="filter__button filter__reset" value="Reset" type="reset">
+            <input class="filter__button filter__submit" value="Search" type="submit">
+          </div>
         </div>
-      </div>
+      </form>
     `);
 
-    this.modalContainer = this.rootNode.querySelector('.modal-container');
     this.filterForm = this.modalContainer.querySelector('.filter');
-
-    this.filterForm.querySelectorAll('.filter__categories-name')
-      .forEach((categoryItem) => categoryItem.addEventListener('click', this.setActiveItem));
+    this.categoriesList = this.filterForm.querySelector('.filter__categories');
 
     this.filterForm.addEventListener('submit', this.handleSubmit);
 
     this.filterForm.querySelector('.filter__close').addEventListener('click', this.hideFilter);
   };
 
-  renderCategories = (data) => data.map((category) => `
-    <li class="filter__categories-item">
-      <div class="filter__categories-name">${this.formatCategoryName(category.name)}</div>
-      <fieldset class="filter__options-list">
-        ${this.renderOptions(category)}
-      </fieldset>
-    </li>
-  `).join('');
+  renderCategories = (data) => {
+    this.categoriesList.innerHTML = data.map((category) => `
+      <li class="filter__categories-item">
+        <div class="filter__categories-name">${this.formatCategoryName(category.name)}</div>
+        <fieldset class="filter__options-list">
+          ${this.renderOptions(category)}
+        </fieldset>
+      </li>
+    `).join('');
+
+    this.filterForm.querySelectorAll('.filter__categories-name')
+      .forEach((categoryItem) => categoryItem.addEventListener('click', this.setActiveItem));
+  };
 
   renderOptions = (category) => {
     const { name, values } = category;
+    let optionsHtml = '';
 
     if (typeof values[0] === 'number') {
-      return `
+      optionsHtml = `
         <label class="filter__options-label filter__options-label-number">From
           <input 
             type="number" 
@@ -72,12 +69,14 @@ export class FilterView {
           >
         </label>
       `;
+    } else {
+      optionsHtml = values.map((value) => `
+        <label class="filter__options-label">
+          <input class="filter__options-check" type="checkbox" name="${value}" data-category="${name}">${this.formatOptionName(value)}
+        </label>
+      `).join('');
     }
-    return values.map((value) => `
-      <label class="filter__options-label">
-        <input class="filter__options-check" type="checkbox" name="${value}" data-category="${name}">${this.formatOptionName(value)}
-      </label>
-    `).join('');
+    return optionsHtml;
   };
 
   formatCategoryName = (name) => this.formatName(name, '-');
@@ -103,13 +102,13 @@ export class FilterView {
   };
 
   showFilter = () => {
-    this.filterForm.parentNode.style.display = 'flex';
+    this.modalContainer.display = 'flex';
     this.modalContainer.style.display = 'block';
   };
 
   hideFilter = () => {
     this.removeActiveItem();
-    this.filterForm.parentNode.style.display = 'none';
+    this.modalContainer.display = 'none';
     this.modalContainer.style.display = 'none';
   };
 }
