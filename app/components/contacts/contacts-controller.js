@@ -8,11 +8,11 @@ export class ContactsController {
     this.events = events;
     this.notify = notify;
 
-    this.subscribe(this.events.SHOW_CONTACTS, this.view.render);
+    this.subscribe(this.events.SHOW_CALLBACK, this.view.render);
   }
 
   handleCallBack = () => {
-    this.notify(this.events.SHOW_CONTACTS);
+    this.notify(this.events.SHOW_CALLBACK);
   };
 
   getMethods = () => ({
