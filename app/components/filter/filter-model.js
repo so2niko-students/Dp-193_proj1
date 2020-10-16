@@ -19,28 +19,25 @@ export class FilterModel {
   }).filter((category) => !this.ignoredCategories.includes(category.name));
 
   extractFormData = (event) => [...event.target.querySelectorAll('input')].reduce((selectedProperties, formElement) => {
-    if (formElement.type !== 'submit') {
-      if (formElement.type === 'checkbox') {
-        if (formElement.checked) {
-          return {
-            ...selectedProperties,
-            [formElement.dataset.category]: [
-              ...selectedProperties[formElement.dataset.category] || [],
-              formElement.name,
-            ],
-          };
-        }
-      } else {
-        return {
-          ...selectedProperties,
-          [formElement.dataset.category]: [
-            ...selectedProperties[formElement.dataset.category] || [],
-            Number(formElement.value),
-          ],
-        };
-      }
+    if (formElement.type === 'checkbox' && formElement.checked) {
+      return {
+        ...selectedProperties,
+        [formElement.dataset.category]: [
+          ...selectedProperties[formElement.dataset.category] ?? [],
+          formElement.name,
+        ],
+      };
+    } else if (formElement.type === 'number') {
+      return {
+        ...selectedProperties,
+        [formElement.dataset.category]: [
+          ...selectedProperties[formElement.dataset.category] ?? [],
+          Number(formElement.value),
+        ],
+      };
+    } else {
+      return selectedProperties;
     }
-    return selectedProperties;
   }, {});
 
   filterData = (carsData, filterParams) => carsData

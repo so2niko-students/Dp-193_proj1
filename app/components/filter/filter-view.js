@@ -53,8 +53,8 @@ export class FilterView {
         <label class="filter__options-label filter__options-label-number">From
           <input 
             type="number" 
-            placeholder="${Math.round(Math.min(...values))}"
-            value="${Math.round(Math.min(...values))}" 
+            placeholder="${Math.floor(Math.min(...values))}"
+            value="${Math.floor(Math.min(...values))}" 
             class="filter__options-input" 
             data-category="${name}"
           >
@@ -62,8 +62,8 @@ export class FilterView {
         <label class="filter__options-label filter__options-label-number">To
           <input 
             type="number" 
-            placeholder="${Math.round(Math.max(...values))}"
-            value="${Math.round(Math.max(...values))}" 
+            placeholder="${Math.ceil(Math.max(...values))}"
+            value="${Math.ceil(Math.max(...values))}" 
             class="filter__options-input" 
             data-category="${name}"
           >
@@ -102,13 +102,13 @@ export class FilterView {
   };
 
   showFilter = () => {
-    this.modalContainer.display = 'flex';
-    this.modalContainer.style.display = 'block';
+    this.modalContainer.style.display = 'flex';
+    this.filterForm.style.display = 'block';
   };
 
   hideFilter = () => {
     this.removeActiveItem();
-    this.modalContainer.display = 'none';
+    this.modalContainer.style.display = 'none';
     this.modalContainer.style.display = 'none';
   };
 }
