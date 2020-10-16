@@ -1,0 +1,15 @@
+@import '_variables';
+@import '_styles';
+
+$colors: (
+        backgroundColor: $backgroundColor,
+        addColor: $addColor,
+        mainColor: $mainColor,
+        textMAinColor: $backgroundColor,
+        textAddColor: $addColor,
+);
+
+$fonts: (
+        mainFont: $mainFont,
+        addFont: $addFont,
+);
