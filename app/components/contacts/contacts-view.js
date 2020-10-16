@@ -64,7 +64,7 @@ export class ContactsView {
 
 		this.addEvent();
 	}
-		addEvent =()=> {
+		addEvent = () => {
 			const callBackElem = document.querySelector('.callMeBack');
 			callBackElem.addEventListener('click', this.showCallBack);
 		}

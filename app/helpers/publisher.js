@@ -1,6 +1,7 @@
 import eventNames from '../config/publisher-events.js'
 
-export default class Publisher {
+
+export default class Publisher{
   events = {};
   eventNames = eventNames;
 
