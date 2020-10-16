@@ -1,6 +1,6 @@
 import './cars-gallery.scss';
 
-export default class ViewCarsGallery {
+export class ViewCarsGallery {
   mainContainer = document.querySelector('.main');
 
   constructor(handleSort, handleShowAll, handleCarDetails, handleLoadMore) {
