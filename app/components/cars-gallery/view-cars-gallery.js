@@ -3,8 +3,8 @@ import './cars-gallery.scss';
 export class ViewCarsGallery {
   mainContainer = document.querySelector('.main');
 
-  constructor(handleSort, handleShowAll, handleCarDetails, handleLoadMore) {
-    this.handleSort = handleSort;
+  constructor({handleFilterButton, handleShowAll, handleCarDetails, handleLoadMore}) {
+    this.handleFilterButton = handleFilterButton;
     this.handleShowAll = handleShowAll;
     this.handleCarDetails = handleCarDetails;
     this.handleLoadMore = handleLoadMore;
@@ -47,7 +47,7 @@ export class ViewCarsGallery {
 
   addEvents = () => {
     const buttonFilter = document.querySelector('.container-filter__sort-btn');
-    buttonFilter.addEventListener('click', this.handleSort );
+    buttonFilter.addEventListener('click', this.handleFilterButton);
 
     const buttonAll = document.querySelector('.container-filter__showall-btn');
     buttonAll.addEventListener('click', this.handleShowAll);
