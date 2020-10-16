@@ -24,7 +24,7 @@ export class ControllerCarsGallery {
     this.handleLoadMore();                     
   };
 
-  handleLoadMore = _ => {
+  handleLoadMore = () => {
     const carsPag = this.model.getCarsPagin();  
     this.view.render(carsPag);
   };
