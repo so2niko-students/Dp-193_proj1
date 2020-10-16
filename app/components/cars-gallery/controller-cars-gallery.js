@@ -19,7 +19,7 @@ export class ControllerCarsGallery {
 
   handleLoadCars = (cars) => {                          
     this.notify(this.events.LOAD_DATA, cars);
-    this.model.filteredCars.length = 0;
+    this.clearFilteredData();
     this.view.renderStructure();  
     this.handleLoadMore();                     
   };
@@ -48,10 +48,14 @@ export class ControllerCarsGallery {
   };
 
   handleShowAll = () => {                 
-    this.model.page = 1;
-    this.model.filteredCars.length = 0;                       
+    this.clearFilteredData();                       
     const cars = this.model.getCarsPagin();
     this.view.render(cars);
+  };
+  
+  clearFilteredData = () => {
+    this.model.page = 1;
+    this.model.filteredCars.length = 0;
   };
   
   getMethods = {
