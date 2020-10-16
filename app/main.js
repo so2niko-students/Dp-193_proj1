@@ -1,6 +1,9 @@
-import Publisher from './helpers/publisher.js';
+import { Publisher } from './helpers/publisher.js';
+
 import { ContactsController } from './components/contacts/contacts-controller.js'
 import { PartnersController }from './components/partners/partners-controller.js';
+
+import { HeaderController } from './components/header/header-controller.js'
 
 import './css/main.scss';
 
@@ -8,4 +11,5 @@ import './css/main.scss';
 const publisher = new Publisher();
 const contactsController = new ContactsController(publisher.methods);
 const partnersController = new PartnersController(publisher.methods);
+const headerController = new HeaderController(publisher.methods);
 
