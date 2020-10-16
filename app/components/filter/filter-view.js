@@ -44,8 +44,7 @@ export class FilterView {
       .forEach((categoryItem) => categoryItem.addEventListener('click', this.setActiveItem));
   };
 
-  renderOptions = (category) => {
-    const { name, values } = category;
+  renderOptions = ({ name, values }) => {
     let optionsHtml = '';
 
     if (typeof values[0] === 'number') {

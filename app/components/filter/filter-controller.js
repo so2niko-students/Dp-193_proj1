@@ -30,10 +30,10 @@ export class FilterController {
     event.preventDefault();
 
     const filterParams = this.model.extractFormData(event);
-    console.log(filterParams);
+
     const carsData = this.model.getData();
     const filteredData = this.model.filterData(carsData, filterParams);
-    console.log(filteredData);
+
     this.view.hideFilter();
     this.notify(this.events.FILTERED_DATA, filteredData);
   };
