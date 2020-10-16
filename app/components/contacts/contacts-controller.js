@@ -1,20 +1,21 @@
-import ContactsModel from './contacts-model.js';
-import ContactsView from './contacts-view.js';
+import { ContactsView } from './contacts-view.js';
 
-export default class ContactsController {
-  constructor({ subscribe, events }) {
-    this.view = new ContactsView();
-    this.model = new ContactsModel();
+export class ContactsController {
+  constructor({ subscribe, events, notify }) {
+    this.view = new ContactsView(this.getMethods());
 
     this.subscribe = subscribe;
     this.events = events;
+    this.notify = notify;
 
     this.subscribe(this.events.SHOW_CONTACTS, this.view.render);
-    
-    // this.onLoad();
   }
 
-  // onLoad = () => {
-  //   this.view.render();
-  // };
+  handleCallBack = () => {
+    this.notify(this.events.SHOW_CONTACTS);
+  };
+
+  getMethods = () => ({
+    showCallBack: this.handleCallBack,
+  });
 }

@@ -1,8 +1,12 @@
 import './contacts-styles.scss';
 
-export default class ContactsView {
+export class ContactsView {
 	main = document.querySelector('.main');
-	
+
+	constructor(showCallBack) {
+		this.showCallBack = showCallBack;
+	}
+
 	render() {
 		this.main.innerHTML = `
 	     <section >
@@ -57,5 +61,12 @@ export default class ContactsView {
 					    <img class="px-3 pb-3 pt-3" src="https://img.icons8.com/dotty/60/000000/phone.png"/>
 				   </div>
 			</section>`;
+
+		this.addEvent();
 	}
+		addEvent =()=> {
+			const callBackElem = document.querySelector('.callMeBack');
+			callBackElem.addEventListener('click', this.showCallBack);
+		}
+
 }

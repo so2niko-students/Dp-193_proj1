@@ -1,6 +1,6 @@
 import './partners-styles.scss';
 
-export default class PartnersView {
+export class PartnersView {
   main = document.querySelector('.main');
 
   render() {
