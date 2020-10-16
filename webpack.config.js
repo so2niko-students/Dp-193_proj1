@@ -1,39 +1,46 @@
-const path = require("path");
-const HTMLWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: "development",
-  entry: ["regenerator-runtime/runtime", "./app/main.js"],
+  mode: 'development',
+  entry: ['regenerator-runtime/runtime', './app/main.js'],
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].bundle.js',
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.svg/,
+        use: {
+          loader: 'svg-url-loader',
+          options: {},
+        },
       },
       {
         test: /\.(sass|scss)$/,
         use: [
           {
-            loader: "style-loader",
-          }, 
+            loader: 'style-loader',
+          },
           {
-            loader: "css-loader", 
-          }, 
+            loader: 'css-loader',
+          },
           {
-            loader: "sass-loader", 
+            loader: 'sass-loader',
           },
         ],
       },
       {
         test: /\.js$/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env"],
+            presets: ['@babel/preset-env'],
           },
         },
       },
@@ -41,7 +48,7 @@ module.exports = {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      template: "./index.html",
+      template: './index.html',
     }),
   ],
 };

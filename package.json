@@ -41,6 +41,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "regenerator-runtime": "^0.13.7",
+    "svg-url-loader": "^6.0.0"
   }
 }
