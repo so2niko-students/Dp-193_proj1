@@ -4,7 +4,7 @@ import { ViewCarsGallery } from './view-cars-gallery.js';
 export class ControllerCarsGallery {
   constructor({notify, events, subscribe}) {
     this.model = new ModelCarsGallery();
-    this.view = new ViewCarsGallery(this.handleFilterButton, this.handleShowAll, this.handleCarDetails, this.handleLoadMore);
+    this.view = new ViewCarsGallery(this.getMethods);
 
     this.notify = notify;
     this.events = events;
@@ -52,4 +52,11 @@ export class ControllerCarsGallery {
     const cars = this.model.getCarsPagin();
     this.view.render(cars);
   };
+  
+  getMethods = {
+    handleFilterButton: this.handleFilterButton,
+    handleShowAll: this.handleShowAll,
+    handleCarDetails: this.handleCarDetails,
+    handleLoadMore: this.handleLoadMore,
+  }
 }
