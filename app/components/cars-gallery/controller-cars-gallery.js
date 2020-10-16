@@ -18,7 +18,8 @@ export class ControllerCarsGallery {
   }
 
   handleLoadCars = (cars) => {                          
-    this.notify(this.events.LOAD_DATA, cars); 
+    this.notify(this.events.LOAD_DATA, cars);
+    this.model.filteredCars.length = 0;
     this.view.renderStructure();  
     this.handleLoadMore();                     
   };
