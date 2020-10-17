@@ -18,7 +18,7 @@ export class FilterModel {
     };
   }).filter((category) => !this.ignoredCategories.includes(category.name));
 
-  extractFormData = (event) => [...event.target.querySelectorAll('input')].reduce((selectedProperties, formElement) => {
+  extractFormData = (inputs) => inputs.reduce((selectedProperties, formElement) => {
     if (formElement.type === 'checkbox' && formElement.checked) {
       return {
         ...selectedProperties,

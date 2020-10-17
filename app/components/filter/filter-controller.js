@@ -10,27 +10,23 @@ export class FilterController {
     this.notify = notify;
     this.events = events;
 
-    this.handleLoad();
-
-    this.subscribe(this.events.LOAD_DATA, this.dataReceivedHandler);
+    this.subscribe(this.events.LOAD_DATA, this.handleLoadData);
     this.subscribe(this.events.SHOW_FILTER, this.view.showFilter);
   }
 
-  handleLoad = () => this.view.renderStructure();
-
-  dataReceivedHandler = (carsData) => {
+  handleLoadData = (carsData) => {
     this.model.setData(carsData);
 
     const categories = this.model.getCategoriesData(carsData);
 
-    this.view.renderCategories(categories);
+    this.view.render(categories);
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const filterParams = this.model.extractFormData(event);
-
+    const inputs = this.view.getInputs();
+    const filterParams = this.model.extractFormData(inputs);
     const carsData = this.model.getData();
     const filteredData = this.model.filterData(carsData, filterParams);
 

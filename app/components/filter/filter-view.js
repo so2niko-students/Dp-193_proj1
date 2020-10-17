@@ -8,10 +8,12 @@ export class FilterView {
     this.formatName = formatName;
   }
 
-  renderStructure = () => {
+  render = (data) => {
     this.modalContainer.insertAdjacentHTML('afterbegin', `
       <form class="filter col-md-6">
-        <ul class="filter__categories"></ul>
+        <ul class="filter__categories">
+          ${this.renderCategories(data)}
+        </ul>
         <div class="filter__controls">
           <input class="filter__button filter__close" value="Close" type="button">
           <div>
@@ -22,27 +24,28 @@ export class FilterView {
       </form>
     `);
 
+    this.addHandlers();
+  };
+
+  addHandlers = () => {
     this.filterForm = this.modalContainer.querySelector('.filter');
-    this.categoriesList = this.filterForm.querySelector('.filter__categories');
 
     this.filterForm.addEventListener('submit', this.handleSubmit);
 
     this.filterForm.querySelector('.filter__close').addEventListener('click', this.hideFilter);
-  };
-
-  renderCategories = (data) => {
-    this.categoriesList.innerHTML = data.map((category) => `
-      <li class="filter__categories-item">
-        <div class="filter__categories-name">${this.formatCategoryName(category.name)}</div>
-        <fieldset class="filter__options-list">
-          ${this.renderOptions(category)}
-        </fieldset>
-      </li>
-    `).join('');
 
     this.filterForm.querySelectorAll('.filter__categories-name')
       .forEach((categoryItem) => categoryItem.addEventListener('click', this.setActiveItem));
   };
+
+  renderCategories = (data) => data.map((category) => `
+    <li class="filter__categories-item">
+      <div class="filter__categories-name">${this.formatCategoryName(category.name)}</div>
+      <fieldset class="filter__options-list">
+        ${this.renderOptions(category)}
+      </fieldset>
+    </li>
+  `).join('');
 
   renderOptions = ({ name, values }) => {
     let optionsHtml = '';
@@ -78,6 +81,8 @@ export class FilterView {
     return optionsHtml;
   };
 
+  getInputs = () => [...this.filterForm.querySelectorAll('input')];
+
   formatCategoryName = (name) => this.formatName(name, '-');
 
   formatOptionName = (name) => this.formatName(name, ' ');
@@ -107,7 +112,7 @@ export class FilterView {
 
   hideFilter = () => {
     this.removeActiveItem();
-    this.modalContainer.style.display = 'none';
+    this.filterForm.style.display = 'none';
     this.modalContainer.style.display = 'none';
   };
 }
