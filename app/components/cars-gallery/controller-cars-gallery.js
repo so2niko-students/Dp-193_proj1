@@ -12,21 +12,29 @@ export class ControllerCarsGallery {
 
     this.subscribe(this.events.SEARCH_MODEL, this.handleFilteredData);
     this.subscribe(this.events.FILTERED_DATA, this.handleFilteredData);
-    this.subscribe(this.events.LOGO_SHOWCARS, this.handleLoadCars); 
+    this.subscribe(this.events.LOGO_SHOWCARS, this.handleLogoClick); 
     
-    this.model.loadCars(this.handleLoadCars);
+    this.model.loadCars(this.handleLoadComponent);
   }
 
-  handleLoadCars = (cars) => {                          
+  handleLoadComponent = (cars) => {                          
     this.notify(this.events.LOAD_DATA, cars);
-    this.clearFilteredData();
-    this.view.renderStructure();  
-    this.handleLoadMore();                     
+    this.handleLoadCarsGallery();                   
   };
 
-  handleLoadMore = () => {
+  handleLoadCarsGallery = () => {
+    this.view.renderStructure();
+    this.handleLoadCars();
+  };
+
+  handleLoadCars = () => {
     const carsPag = this.model.getCarsPagin();  
     this.view.render(carsPag);
+  };
+
+  handleLogoClick = () => {
+    this.model.clearFilteredCars();
+    this.handleLoadCarsGallery();
   };
 
   handleFilteredData = (data) => {
@@ -44,24 +52,19 @@ export class ControllerCarsGallery {
   };
 
   handleFilterButton = () => {
-    this.notify(this.events.SHOW_FILTER);        
+    this.notify(this.events.SHOW_FILTER);       
   };
 
   handleShowAll = () => {                 
-    this.clearFilteredData();                       
+    this.model.clearFilteredCars();                      
     const cars = this.model.getCarsPagin();
     this.view.render(cars);
-  };
-  
-  clearFilteredData = () => {
-    this.model.page = 1;
-    this.model.filteredCars.length = 0;
   };
   
   getMethods = {
     handleFilterButton: this.handleFilterButton,
     handleShowAll: this.handleShowAll,
     handleCarDetails: this.handleCarDetails,
-    handleLoadMore: this.handleLoadMore,
-  }
+    handleLoadCars: this.handleLoadCars,
+  };
 }

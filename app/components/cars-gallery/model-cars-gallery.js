@@ -30,4 +30,9 @@ export class ModelCarsGallery {
     this.filteredCars = cars;
     return this.filteredCars.slice(0, this.page++ * this.size);
   };
+
+  clearFilteredCars = () => {
+    this.page = 1;
+    this.filteredCars.length = 0;
+  };
 }

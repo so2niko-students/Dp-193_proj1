@@ -3,11 +3,11 @@ import './cars-gallery.scss';
 export class ViewCarsGallery {
   mainContainer = document.querySelector('.main');
 
-  constructor({handleFilterButton, handleShowAll, handleCarDetails, handleLoadMore}) {
+  constructor({handleFilterButton, handleShowAll, handleCarDetails, handleLoadCars}) {
     this.handleFilterButton = handleFilterButton;
     this.handleShowAll = handleShowAll;
     this.handleCarDetails = handleCarDetails;
-    this.handleLoadMore = handleLoadMore;
+    this.handleLoadCars = handleLoadCars;
   }
   
   renderStructure(){
@@ -30,11 +30,11 @@ export class ViewCarsGallery {
     
   `);
     this.addEvents();
-  }
+  };
   
   render = (data) => {
-    this.carsGallery.innerHTML = data.map(this.renderCars).join('');
-  }
+    this.carsGallery.innerHTML = data.map(this.renderCar).join('');
+  };
 
   renderCar = ({photoUrl, brand, model, price, id}) => {
     return `
@@ -46,7 +46,7 @@ export class ViewCarsGallery {
         <button class="cars-gallery__car-details-btn border-0 text-primary" type="button" data-id="${id}">More information</button>
       </div>
     `
-  }
+  };
 
   addEvents = () => {
     const buttonFilter = document.querySelector('.container-filter__sort-btn');
@@ -56,9 +56,9 @@ export class ViewCarsGallery {
     buttonAll.addEventListener('click', this.handleShowAll);
 
     const buttonLoadMore = document.querySelector('.container-loadmore');
-    buttonLoadMore.addEventListener('click', this.handleLoadMore);
+    buttonLoadMore.addEventListener('click', this.handleLoadCars);
 
     this.carsGallery = document.querySelector('.cars-gallery');
     this.carsGallery.addEventListener('click', this.handleCarDetails);
-  }
+  };
 }
