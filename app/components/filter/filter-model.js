@@ -18,21 +18,21 @@ export class FilterModel {
     };
   }).filter((category) => !this.ignoredCategories.includes(category.name));
 
-  extractFormData = (inputs) => inputs.reduce((selectedProperties, formElement) => {
-    if (formElement.type === 'checkbox' && formElement.checked) {
+  extractFormData = (inputs) => inputs.reduce((selectedProperties, formInput) => {
+    if (formInput.type === 'checkbox' && formInput.checked) {
       return {
         ...selectedProperties,
-        [formElement.dataset.category]: [
-          ...selectedProperties[formElement.dataset.category] ?? [],
-          formElement.name,
+        [formInput.dataset.category]: [
+          ...selectedProperties[formInput.dataset.category] ?? [],
+          formInput.name,
         ],
       };
-    } else if (formElement.type === 'number') {
+    } else if (formInput.type === 'number') {
       return {
         ...selectedProperties,
-        [formElement.dataset.category]: [
-          ...selectedProperties[formElement.dataset.category] ?? [],
-          Number(formElement.value),
+        [formInput.dataset.category]: [
+          ...selectedProperties[formInput.dataset.category] ?? [],
+          Number(formInput.value),
         ],
       };
     } else {
@@ -42,23 +42,20 @@ export class FilterModel {
 
   filterData = (carsData, filterParams) => carsData
     .filter((car) => Object.keys(filterParams).reduce((isProper, key) => {
-      if (Array.isArray(car[key])) {
-        const arraysCrossing = car[key].filter((value) => filterParams[key].includes(value));
+      let flag = isProper;
 
-        if (!arraysCrossing.length) {
-          return false;
-        }
-      } else if (typeof car[key] === 'string') {
-        if (!filterParams[key].includes(car[key])) {
-          return false;
-        }
-      } else if (typeof car[key] === 'number') {
-        if (!(car[key] >= filterParams[key][0] && car[key] <= filterParams[key][1])) {
-          return false;
-        }
+      if (Array.isArray(car[key]) && !this.getArraysCrossingLength(car[key], filterParams[key])) {
+        flag = false;
+      } else if (typeof car[key] === 'string' && !filterParams[key].includes(car[key])) {
+        flag = false;
+      } else if (typeof car[key] === 'number' && !(car[key] >= filterParams[key][0] && car[key] <= filterParams[key][1])) {
+        flag = false;
       }
-      return isProper;
+      return flag;
     }, true));
+
+  getArraysCrossingLength = (carParam, filterParam) => carParam
+    .filter((value) => filterParam.includes(value)).length;
 
   formatName = (name, splitter) => name.split(splitter).map((str) => str.charAt(0).toUpperCase() + str.slice(1)).join(' ');
 }
