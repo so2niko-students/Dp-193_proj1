@@ -21,5 +21,6 @@ module.exports = {
     'import/extensions': ['error', 'ignorePackages', {
       js: 'always',
     }],
+    'object-curly-spacing': [2, 'always'],
   },
 };
