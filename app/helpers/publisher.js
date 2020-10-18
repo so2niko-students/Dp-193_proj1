@@ -31,5 +31,5 @@ export default class Publisher {
     subscribe: this.subscribe,
     unsubscribe: this.unsubscribe,
     events: this.eventNames,
-  }
+  };
 }
