@@ -34,7 +34,7 @@ export class ControllerCarsGallery {
 
   handleLogoClick = () => {
     this.model.clearFilteredCars();
-    this.handleLoadCarsGallery();
+    this.handleLoadCars();
   };
 
   handleFilteredData = (data) => {
