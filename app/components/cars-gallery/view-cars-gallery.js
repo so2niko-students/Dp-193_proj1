@@ -30,7 +30,7 @@ export class ViewCarsGallery {
     
   `);
     this.addEvents();
-  };
+  }
   
   render = (data) => {
     this.carsGallery.innerHTML = data.map(this.renderCar).join('');
