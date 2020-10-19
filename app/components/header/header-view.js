@@ -53,7 +53,7 @@ export class HeaderView {
             </nav>
       `;
       this.addEvents();
-    }
+    };
 
     addEvents = () => {
       const filterElem = document.querySelector('.header__search');
@@ -67,5 +67,5 @@ export class HeaderView {
 
       const contactsElem = document.querySelector('#contacts');
       contactsElem.addEventListener('click', this.showContacts);
-    }
+    };
 }

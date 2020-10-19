@@ -29,11 +29,11 @@ export class HeaderController {
     const changedData = this.model.filterByModel(modelName);
 
     this.notify(this.events.SEARCH_MODEL, changedData);
-  }
+  };
 
   handleLogoClick = () => {
     this.notify(this.events.LOGO_SHOWCARS);
-  }
+  };
 
   handlePartnersClick = () => {
     this.notify(this.events.SHOW_PARTNERS);
