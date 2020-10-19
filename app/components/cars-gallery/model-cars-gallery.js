@@ -12,11 +12,11 @@ export class ModelCarsGallery {
         this.cars = reqData;
         handleLoadCars(this.cars);
       });
-  };
+  }
 
   getCar(id) {
     return this.cars.find(car => car.id == id);
-  };
+  }
 
   getCarsPagin() {
     if(this.filteredCars.length !== 0) {
@@ -24,12 +24,12 @@ export class ModelCarsGallery {
     } else {
       return this.cars.slice(0, this.page++ * this.size);
     }
-  };
+  }
 
   getFilteredCars(cars) {
     this.filteredCars = cars;
     return this.filteredCars.slice(0, this.page++ * this.size);
-  };
+  }
 
   clearFilteredCars = () => {
     this.page = 1;
