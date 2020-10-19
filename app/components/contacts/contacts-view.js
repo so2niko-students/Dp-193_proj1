@@ -7,7 +7,7 @@ export class ContactsView {
 		this.showCallBack = showCallBack;
 	}
 
-	render() {
+	render = () => {
 		this.main.innerHTML = `
 	     <section >
 			  <div class="d-flex flex-row justify-content-between col-sm-12 col-md-10 col-lg-8 col-xl-5 mx-auto">

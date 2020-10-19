@@ -1,14 +1,54 @@
 @import '_variables';
 
 $colors: (
-        backgroundColor: $backgroundColor,
-        addColor: $addColor,
-        mainColor: $mainColor,
-        textMAinColor: $backgroundColor,
-        textAddColor: $addColor,
+  backgroundColor: $backgroundColor,
+  addColor: $addColor,
+  mainColor: $mainColor,
+  textMAinColor: $backgroundColor,
+  textAddColor: $addColor,
 );
 
 $fonts: (
-        mainFont: $mainFont,
-        addFont: $addFont,
+  mainFont: $mainFont,
+  addFont: $addFont,
 );
+
+html, body {
+  background-color: map-get($colors, backgroundColor);
+  height: 100%;
+}
+
+footer {
+  background-color: map-get($colors, mainColor);
+  font-family: map-get($fonts, addFont);
+  font-size: 12px;
+
+  &__text{
+    font-size: 14px;
+  }
+  &>.footer{
+    flex-shrink: 0;
+  }
+}
+
+.modal-window {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.main {
+  flex: 1 0 auto;
+}

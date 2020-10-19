@@ -3,7 +3,7 @@ import './partners-styles.scss';
 export class PartnersView {
   main = document.querySelector('.main');
 
-  render() {
+  render = () => {
     this.main.innerHTML = `
         <section>
         	<h2 class="text-center pt-5">Our Partners</h2>
@@ -52,90 +52,6 @@ export class PartnersView {
                         </div>
                     </div>
                      <div class="col-xs-10 col-sm-7 col-md-4 col-lg-2">
-                        <div>
-                            <div class="mb-3 w-75 mx-auto ">
-                                <img src="http://pngimg.com/uploads/chrysler/chrysler_PNG51.png" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-10 col-sm-7 col-md-4 col-lg-2">
-                        <div>
-                            <div class="mb-3 w-75 mx-auto ">
-                                <img src="http://pngimg.com/uploads/harley_davidson/harley_davidson_PNG70.png" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-10 col-sm-7 col-md-4 col-lg-2">
-                        <div>
-                            <div class="mb-3 w-75 mx-auto ">
-                                <img src="http://pngimg.com/uploads/lotus/lotus_PNG32.png" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-10 col-sm-7 col-md-4 col-lg-2">
-                        <div>
-                            <div class="mb-3 w-75 mx-auto ">
-                                <img src="http://pngimg.com/uploads/ferrari/ferrari_PNG10665.png" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-10 col-sm-7 col-md-4 col-lg-2">
-                        <div>
-                            <div class="mb-3 w-75 mx-auto ">
-                                <img src="http://pngimg.com/uploads/lamborghini/lamborghini_PNG10706.png" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-10 col-sm-7 col-md-4 col-lg-2">
-                        <div>
-                            <div class="mb-3 w-75 mx-auto ">
-                                <img src="http://pngimg.com/uploads/maserati/maserati_PNG72.png" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                       <div class="col-xs-10 col-sm-7 col-md-4 col-lg-2">
-                        <div>
-                            <div class="mb-3 w-75 mx-auto ">
-                                <img src="http://pngimg.com/uploads/chrysler/chrysler_PNG51.png" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-10 col-sm-7 col-md-4 col-lg-2">
-                        <div>
-                            <div class="mb-3 w-75 mx-auto ">
-                                <img src="http://pngimg.com/uploads/harley_davidson/harley_davidson_PNG70.png" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-10 col-sm-7 col-md-4 col-lg-2">
-                        <div>
-                            <div class="mb-3 w-75 mx-auto ">
-                                <img src="http://pngimg.com/uploads/lotus/lotus_PNG32.png" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-10 col-sm-7 col-md-4 col-lg-2">
-                        <div>
-                            <div class="mb-3 w-75 mx-auto ">
-                                <img src="http://pngimg.com/uploads/ferrari/ferrari_PNG10665.png" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-10 col-sm-7 col-md-4 col-lg-2">
-                        <div>
-                            <div class="mb-3 w-75 mx-auto ">
-                                <img src="http://pngimg.com/uploads/lamborghini/lamborghini_PNG10706.png" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-10 col-sm-7 col-md-4 col-lg-2">
-                        <div>
-                            <div class="mb-3 w-75 mx-auto ">
-                                <img src="http://pngimg.com/uploads/maserati/maserati_PNG72.png" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                       <div class="col-xs-10 col-sm-7 col-md-4 col-lg-2">
                         <div>
                             <div class="mb-3 w-75 mx-auto ">
                                 <img src="http://pngimg.com/uploads/chrysler/chrysler_PNG51.png" alt="" class="img-fluid">
