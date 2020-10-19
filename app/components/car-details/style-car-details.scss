@@ -1,0 +1,29 @@
+@import '../../css/main.scss';
+
+.list-group-item {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.color-car {
+    display: table;
+}
+
+.first-color {
+    width: 10px;
+    height: 10px;
+    display: table-cell;
+}
+.second-color {
+    width: 10px;
+    height: 10px;
+    display: table-cell;
+}
+.third-color {
+    width: 10px;
+    height: 10px;
+    display: table-cell;
+}
+select {
+    border: none
+}
