@@ -10,8 +10,8 @@ export class ViewCarsGallery {
     this.handleLoadCars = handleLoadCars;
   }
   
-  renderStructure(){
-    this.mainContainer.insertAdjacentHTML('beforeend', `
+  renderStructure() {
+    this.mainContainer.innerHTML = `
     <div class="container-filter pt-5 d-flex justify-content-center">
       <div class="container-filter__showall">
         <span style="cursor: default;">Category</span>
@@ -28,7 +28,7 @@ export class ViewCarsGallery {
       <button type="button" class="container-loadmore__btn load-more w-100 border-0">Load more...</button>
     </div>
     
-  `);
+  `;
     this.addEvents();
   }
   
