@@ -34,7 +34,9 @@ export class ControllerCarsGallery {
 
   handleLogoClick = () => {
     this.model.clearFilteredCars();
+    const cars = this.model.cars;
     this.handleLoadCars();
+    this.notify(this.events.LOAD_DATA, cars);
   };
 
   handleFilteredData = (data) => {
@@ -59,6 +61,7 @@ export class ControllerCarsGallery {
     this.model.clearFilteredCars();                      
     const cars = this.model.getCarsPagin();
     this.view.render(cars);
+    this.notify(this.events.LOAD_DATA, cars);
   };
   
   getMethods = {
