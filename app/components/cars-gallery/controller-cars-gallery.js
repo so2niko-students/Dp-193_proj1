@@ -61,7 +61,7 @@ export class ControllerCarsGallery {
     this.model.clearFilteredCars();                      
     const cars = this.model.getCarsPagin();
     this.view.render(cars);
-    this.notify(this.events.RESET_DATA, cars);
+    this.notify(this.events.RESET_DATA, this.model.cars);
   };
   
   getMethods = {
