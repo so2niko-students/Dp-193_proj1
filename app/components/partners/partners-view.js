@@ -20,7 +20,7 @@ export class PartnersView {
   renderImg = (links) => links.reduce((acc, el) =>
       (acc += `
         <div class="col-sm-6 col-md-2 d-flex align-items-center ">
-          <img src="${el}" alt="Car picture" class="img-fluid pb-5 pt-5 w-75">
+          <img src="${el}" alt="Car picture" class="img-fluid pb-5 pt-5">
         </div>
-      `), '')
+      `), '');
 }

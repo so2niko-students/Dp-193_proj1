@@ -12,6 +12,5 @@ export class PartnersModel {
 		"http://pngimg.com/uploads/bentley/bentley_PNG44.png",
 		"http://pngimg.com/uploads/cadillac/cadillac_PNG66.png"];
 
-
 	getArrayOfLinks = () => this.arrayOfLinks;
 }

@@ -2,12 +2,12 @@
 
 section {
   font-family: map-get($fonts, mainFont);
-
-  & div {
-    max-width: 1200px;
-  }
+}
+.row{
+  max-width: 1200px;
+  margin: auto;
 }
 h2 {
   color: map-get($colors, mainColor);
+  font-family: map-get($fonts, mainFont);
 }
-

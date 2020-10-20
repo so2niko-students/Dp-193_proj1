@@ -11,6 +11,5 @@ export class PartnersController {
     this.events = events;
 
     this.subscribe(this.events.SHOW_PARTNERS, this.view.render);
-
   }
 }
