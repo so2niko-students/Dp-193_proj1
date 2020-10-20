@@ -7,7 +7,7 @@ export class SliderModel {
 
   slideInterval = 5;
 
-  getCarId(id) {
+  getCarById(id) {
     return this.randomCars.find((car) => car.id === id);
   }
 
@@ -15,12 +15,12 @@ export class SliderModel {
     return this.randomCars[this.currentImageIndex].id;
   }
 
-  getRandomCar = () => Math.floor(Math.random() * this.data.length);
+  setRandomCar = () => Math.floor(Math.random() * this.data.length);
 
   randomCarsFilter() {
     this.randomCars = [];
     for (let i = 0; i < 5; i += 1) {
-      this.randomCars.push(this.data[this.getRandomCar()]);
+      this.randomCars.push(this.data[this.setRandomCar()]);
     }
   }
 

@@ -17,10 +17,6 @@ export class SliderController {
 
   handleLoadData = (data) => {
     this.model.data = data;
-    this.handleLoadSliderWrapper();
-  };
-
-  handleLoadSliderWrapper = () => {
     this.view.renderWrapper();
     this.handleLoadSliderImages();
   };
@@ -64,11 +60,8 @@ export class SliderController {
   };
 
   handleCarDetails = () => {
-    // const carId = Number(event.target.dataset.id);
     const carId = this.model.getCurrentCarId();
-    console.log(carId);
-    const car = this.model.getCarId(carId);
-    console.log(car);
+    const car = this.model.getCarById(carId);
     this.notify(this.events.CAR_DETAILS, car);
   };
 

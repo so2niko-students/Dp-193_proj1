@@ -31,7 +31,7 @@ export class SliderView {
     `;
 
   updateVisibility = ({ id, isNeedToShow }) => {
-    const imageBlock = document.querySelector(`.image[data-id='${id}']`);
+    const imageBlock = this.sliderImage.querySelector(`.image[data-id='${id}']`);
     if (isNeedToShow) {
       imageBlock.classList.remove('opacity-0');
     } else {
