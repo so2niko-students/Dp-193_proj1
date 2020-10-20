@@ -115,4 +115,6 @@ export class FilterView {
     this.filterForm.style.display = 'none';
     this.modalContainer.style.display = 'none';
   };
+
+  resetFormInputs = () => this.filterForm.reset();
 }
