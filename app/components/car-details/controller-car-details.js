@@ -1,35 +1,23 @@
-import ModelDetails from "./model-car-details.js";
-import ViewDetails from "./view-car-details.js";
+import { ModelDetails } from "./model-car-details.js";
+import { ViewDetails } from "./view-car-details.js";
 
-export default class ControllerDetails{
-    constructor({ subscribe, events, notify }){
-        this.view = new ViewDetails(this.handleAddToOrder);
-        this.model = new ModelDetails();
+export class ControllerDetails{
+  constructor({ subscribe, events, notify }){
+    this.view = new ViewDetails(this.handleAddToOrder);
+    this.model = new ModelDetails();
+    this.subscribe = subscribe;
+    this.notify = notify;
 
-        subscribe(events.ADD_DETAILS, this.handleAddDetails);
+    this.subscribe(events.CAR_DETAILS, this.showCar);
+  }
 
-        this.notify = notify;
-        this.showDetails();
-    }
+  showCar = car => {
+    this.model.car = car
+    this.view.renderCarCard(car)
+  };
 
-    handleAddDetails = car => {
-        this.model.addDetails(car);
-
-        this.showDetails();
-    }
-
-    showDetails(){
-        const details = this.model.getDetails();
-        this.view.renderDetails(details);
-        console.log(details)
-    }
-
-    handleAddToOrder = (ev) => {
-        const id = ev.target.dataset.carId;
-        console.log(id);
-        if(id){
-            const car = this.model.getDetails(id);
-            this.notify(this.events.ADD_ORDER, car);
-        }
-    };
+  handleAddToOrder = () => {
+    const car = this.model.getDetails(id);
+    this.notify(this.events.ADD_ORDER, car);
+  }
 }
