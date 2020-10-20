@@ -4,7 +4,7 @@ import { CallModel } from './call-model.js';
 export class CallController {
   constructor() {
     this.model = new CallModel();
-    this.view = new CallView(this.model.validation);
+    this.view = new CallView(this.handleFormSubmit);
 
     this.loadCallMeForm();
   }
