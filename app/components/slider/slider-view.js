@@ -11,14 +11,12 @@ export class SliderView {
 
   renderWrapper() {
     this.sliderContainer.insertAdjacentHTML('afterbegin', `
-      <div class='container slider'>
-        <div class='slider-image-container'>
+      <div class='container-fluid slider'>        
           <div class='slider-image'>
 
-          </div>
+          </div>                 
           <button class='btn slider-left-btn'>&#10094</button>
-          <button class='btn slider-right-btn'>&#10095</button>
-        </div>
+          <button class='btn slider-right-btn'>&#10095</button>        
       </div>
     `);
     this.sliderEvents();
@@ -28,14 +26,12 @@ export class SliderView {
     this.sliderImage.innerHTML = cars.map(this.renderImg).join(' ');
   };
 
-  renderImg = ({ id, photoUrl }) => {
-    return `
-      <img src='${photoUrl[0]}' class='image opacity-0' id='sliderImg_${id}'>
+  renderImg = ({ id, photoUrl }) => `
+      <img src='${photoUrl[0]}' class='image opacity-0' data-id='${id}'>
     `;
-  };
 
   updateVisibility = ({ id, isNeedToShow }) => {
-    const imageBlock = document.querySelector(`#sliderImg_${id}`);
+    const imageBlock = document.querySelector(`.image[data-id='${id}']`);
     if (isNeedToShow) {
       imageBlock.classList.remove('opacity-0');
     } else {

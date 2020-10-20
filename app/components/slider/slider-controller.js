@@ -39,9 +39,8 @@ export class SliderController {
       clearInterval(this.autoPlayTimeoutInstance);
     }
 
-    this.autoPlayTimeoutInstance = setInterval(() => {
-      this.handleAutoPlay();
-    }, this.model.slideInterval * 1000);
+    this.autoPlayTimeoutInstance = setInterval(this.handleAutoPlay,
+      this.model.slideInterval * 1000);
   };
 
   handleAutoPlay = () => {
@@ -64,9 +63,14 @@ export class SliderController {
     this.initAutoPlay();
   };
 
-    handleCarDetails = () => {
-
-    };
+  handleCarDetails = () => {
+    // const carId = Number(event.target.dataset.id);
+    const carId = this.model.getCurrentCarId();
+    console.log(carId);
+    const car = this.model.getCarId(carId);
+    console.log(car);
+    this.notify(this.events.CAR_DETAILS, car);
+  };
 
   sliderHandlers = {
     handleSlideLeft: this.handleSlideLeft,
