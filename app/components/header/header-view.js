@@ -68,4 +68,8 @@ export class HeaderView {
       const contactsElem = document.querySelector('#contacts');
       contactsElem.addEventListener('click', this.showContacts);
     }
+
+    clearInput = () => {
+      document.querySelector('.header__input').value = '';
+    };
 }
