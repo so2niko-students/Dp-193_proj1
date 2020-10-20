@@ -52,6 +52,8 @@ export class HeaderView {
               </div>
             </nav>
       `;
+      this.inputElem = document.querySelector('.header__input');
+
       this.addEvents();
     }
 
@@ -68,4 +70,8 @@ export class HeaderView {
       const contactsElem = document.querySelector('#contacts');
       contactsElem.addEventListener('click', this.showContacts);
     }
+
+    clearInput = () => {
+      this.inputElem.value = '';
+    };
 }
