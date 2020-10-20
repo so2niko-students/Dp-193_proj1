@@ -52,6 +52,8 @@ export class HeaderView {
               </div>
             </nav>
       `;
+      this.inputElem = document.querySelector('.header__input');
+
       this.addEvents();
     }
 
@@ -70,6 +72,6 @@ export class HeaderView {
     }
 
     clearInput = () => {
-      document.querySelector('.header__input').value = '';
+      this.inputElem.value = '';
     };
 }
