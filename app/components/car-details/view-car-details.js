@@ -1,15 +1,18 @@
 import './style-car-details.scss';
 
 export class ViewDetails {
-    carDetailsCard = document.querySelector('.car-details');
+  main = document.querySelector('.main');
+  modalWindow = document.querySelector('.modal-window');
 
-    constructor(handleAddToOrder){
-        this.carDetailsCard.addEventListener('click', handleAddToOrder);
-    }
+  color = null;
+
+  constructor(handleAddToOrder){
+    this.handleAddToOrder = handleAddToOrder
+  }
 
   renderCarCard({ id, photoUrl, brand, model, price, color, country, year, seats, 'body-type': bodyType, transmission,'engine-capacity': engineCapacity,
                 'fuel-tank':fuelTank, 'max-power':maxPower, 'max-speed':maxSpeed, consumption, 'trunk-volume': trunkVolume}) {    
-    this.carDetailsCard.innerHTML = ` 
+    this.modalWindow.innerHTML = ` 
       <div class="container">
         <div class="row">
           <div class="col">
@@ -28,7 +31,7 @@ export class ViewDetails {
                 <li class="list-group-item active">${brand}</li>
                 <li class="list-group-item">Model: ${model}</li>
                 <li class="list-group-item">Price: ${price}</li>
-                <li class="list-group-item">Color: 
+                <li class="color-container list-group-item">Color: 
                   <button class="first-color" style="background:${color[0]};"></button>
                   <button class="second-color" style="background:${color[1]};"></button>
                   <button class="third-color" style="background:${color[2]};"></button>
@@ -38,7 +41,7 @@ export class ViewDetails {
                 <li class="list-group-item">Seats: ${seats}</li>
                 <li class="list-group-item">Body-type: ${bodyType}</li>
                 <li class="list-group-item">Transmission:
-                  <select>
+                  <select class="transmission-container">
                     <option>${transmission[0]}</option>
                     <option>${transmission[1]}</option>
                   </select>
@@ -51,10 +54,50 @@ export class ViewDetails {
                 <li class="list-group-item">Trunk-volume: ${trunkVolume}</li>
               </ul>              
             </div>
-          <a href="#" class="btn btn-primary" data-car-id="${ id }">Make an order</a>
+          <div class="d-flex justify-content-between">
+            <button type="button" class="close-popUp">Close</button>
+            <button type="button" class="makeOrder btn btn-primary" data-car-id="${ id }">Make an order</button>
+          </div>
         </div>
       </div>
     `;
+    this.getMethod();
   }
+
+  getColor = (event) => {
+    this.color = event.target.style.background;
+  };
+
+  getValue = () => {
+    const transmission = document.querySelector('.transmission-container');
+
+    return {
+      transmission: transmission.value,
+      color: this.color,
+    };
+  };
+
+  hideCard = () => {
+    const popUp = document.querySelector('.modal-window')
+    popUp.style.display = 'none';
+  }
+  
+  openPopup = () => {
+    const popUp = document.querySelector('.modal-window')
+    popUp.style.display = 'block';
+  }
+
+  getMethod = () => {
+    const colorContainer = document.querySelector('.color-container');
+    colorContainer.addEventListener('click', this.getColor);
+    
+    const makeOrder = document.querySelector('.makeOrder');
+    makeOrder.addEventListener('click', this.handleAddToOrder)
+
+    const closePopup = document.querySelector('.close-popUp');
+    closePopup.addEventListener('click', this.hideCard)
+
+    const popUp = document.querySelector('.container')
+  };
 }
 

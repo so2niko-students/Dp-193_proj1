@@ -1,15 +1,61 @@
 @import '_variables';
-@import '_styles';
 
 $colors: (
-        backgroundColor: $backgroundColor,
-        addColor: $addColor,
-        mainColor: $mainColor,
-        textMainColor: $backgroundColor,
-        textAddColor: $addColor,
+  backgroundColor: $backgroundColor,
+  addColor: $addColor,
+  mainColor: $mainColor,
+  textMAinColor: $backgroundColor,
+  textAddColor: $addColor,
 );
 
 $fonts: (
-        mainFont: $mainFont,
-        addFont: $addFont,
+  mainFont: $mainFont,
+  addFont: $addFont,
 );
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-window {
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+html, body {
+  background-color: map-get($colors, backgroundColor);
+  height: 100%;
+}
+
+.footer{
+  height:120px;
+  font-size:14px;
+  background-color: map-get($colors, mainColor);
+  font-family: map-get($fonts, addFont);
+
+  &__text{
+    margin:0px;
+    font-size:18px;
+  }
+}
+
+.main {
+  flex: 1 0 auto;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

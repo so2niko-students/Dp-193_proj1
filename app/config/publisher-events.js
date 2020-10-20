@@ -7,8 +7,8 @@ const publisherEvents = {
   LOGO_SHOWCARS: 'LOGO_SHOWCARS',
   SHOW_PARTNERS: 'SHOW_PARTNERS',
   SHOW_CONTACTS: 'SHOW_CONTACTS',
-  ADD_ORDER: 'ADD_ORDER'
-
+  ADD_ORDER: 'ADD_ORDER',
+  RESET_DATA: 'RESET_DATA',
 };
 
 export default publisherEvents;
