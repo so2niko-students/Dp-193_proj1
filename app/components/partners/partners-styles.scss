@@ -1,0 +1,13 @@
+@import "../../css/main.scss";
+
+section {
+  font-family: map-get($fonts, mainFont);
+}
+.row{
+  max-width: 1200px;
+  margin: auto;
+}
+h2 {
+  color: map-get($colors, mainColor);
+  font-family: map-get($fonts, mainFont);
+}
