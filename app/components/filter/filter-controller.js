@@ -13,6 +13,7 @@ export class FilterController {
 
     this.subscribe(this.events.LOAD_DATA, this.handleLoadData);
     this.subscribe(this.events.SHOW_FILTER, this.view.showFilter);
+    this.subscribe(this.events.RESET_DATA, this.view.resetFormInputs);
   }
 
   handleLoadData = (carsData) => {
