@@ -1,7 +1,7 @@
 import './call-styles.scss';
 
 export class CallView {
-    contain = document.querySelector('.pouop-conteiner');
+    contain = document.querySelector('.popup-container');
 
     constructor(handleFormSubmit) {
       this.handleFormSubmit = handleFormSubmit;

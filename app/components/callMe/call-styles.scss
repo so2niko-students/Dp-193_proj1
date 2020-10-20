@@ -1,7 +1,7 @@
 @import '../../css/variables';
 
 
-.pouop-conteiner .form-show{
+.popup-container .form-show{
     margin: auto;
     border-radius: 10px;
     display: grid;
@@ -10,7 +10,7 @@
     background-color: rgb(209, 202, 230);
 } 
 
-.pouop-conteiner input[type="text"]{
+.popup-container input[type="text"]{
     margin: 17px;
     border: 0;
     width: 400px;
@@ -24,10 +24,9 @@
     margin: auto;
     padding: 11px;
     border: 0;
-
 }
 
-.btn {
+.btn{
     background-color:  rgb(174, 158, 223);
     border: none;
     color: white;
@@ -39,11 +38,11 @@
 }
 
 
-.btn:hover {
+.btn:hover{
     background-color:  rgb(156, 141, 202);
 }
 
-.pouop-conteiner{
+.popup-container{
     position: fixed;
     right: 2%;
     bottom: 20%;
@@ -55,8 +54,7 @@
     align-items:flex-end;
 }
 
-.pouop-conteiner p
-{
+.popup-container p{
     font-size: 14pt;
     text-align: center;
 }
