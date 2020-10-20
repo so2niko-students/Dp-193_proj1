@@ -11,6 +11,7 @@ export class HeaderController {
     this.events = events;
 
     this.subscribe(this.events.RESET_DATA, this.handleLoadData);
+    this.subscribe(this.events.LOAD_DATA, this.handleLoadData);
     this.subscribe(this.events.FILTERED_DATA, this.handleLoadData);
 
     this.onLoad();
