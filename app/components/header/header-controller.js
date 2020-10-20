@@ -10,6 +10,7 @@ export class HeaderController {
     this.subscribe = subscribe;
     this.events = events;
 
+    this.subscribe(this.events.RESET_DATA, this.handleLoadData);
     this.subscribe(this.events.LOAD_DATA, this.handleLoadData);
     this.subscribe(this.events.FILTERED_DATA, this.handleLoadData);
 
@@ -27,13 +28,14 @@ export class HeaderController {
   handleSearch = (ev) => {
     const modelName = ev.target.closest('.header__input').value;
     const changedData = this.model.filterByModel(modelName);
+    this.view.clearInput();
 
     this.notify(this.events.SEARCH_MODEL, changedData);
-  }
+  };
 
   handleLogoClick = () => {
     this.notify(this.events.LOGO_SHOWCARS);
-  }
+  };
 
   handlePartnersClick = () => {
     this.notify(this.events.SHOW_PARTNERS);

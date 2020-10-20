@@ -13,42 +13,49 @@ $fonts: (
   addFont: $addFont,
 );
 
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-window {
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
 html, body {
   background-color: map-get($colors, backgroundColor);
   height: 100%;
 }
 
-footer {
+.footer{
+  height:120px;
+  font-size:14px;
   background-color: map-get($colors, mainColor);
   font-family: map-get($fonts, addFont);
-  font-size: 12px;
 
   &__text{
-    font-size: 14px;
-  }
-  &>.footer{
-    flex-shrink: 0;
+    margin:0px;
+    font-size:18px;
   }
 }
 
-.modal-window {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.8);
-  display: none;
-  justify-content: center;
-  align-items: center;
+.main {
+  flex: 1 0 auto;
 }
 
 #root {
   display: flex;
   flex-direction: column;
   height: 100%;
-}
-
-.main {
-  flex: 1 0 auto;
 }

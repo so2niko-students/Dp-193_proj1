@@ -8,13 +8,17 @@
 
 `surname-#issue-name_of_issue`
 
+## link: 
+
+https://kolimaga.herokuapp.com/
+
 ### Contributors:
 
 @Anastasiia0999
 Anastasia Gordienko
 
-@Antony343
-Anton Hrudiev
+@DrozdovOleg
+Oleg Drozdov
 
 @archontis-cpu
 Volodymyr Rusynov
