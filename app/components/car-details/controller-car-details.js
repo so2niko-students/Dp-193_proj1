@@ -17,6 +17,7 @@ export class ControllerDetails {
     this.model.car = car;
     this.view.renderCarCard(car);
     this.view.openPopup();
+    console.log(car);
   };
 
   handleAddToOrder = () => {

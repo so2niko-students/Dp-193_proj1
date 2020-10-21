@@ -1,9 +1,9 @@
 import './style-car-details.scss';
 
 export class ViewDetails {
-  main = document.querySelector('.main');
-  modalWindow = document.querySelector('.modal-window');
-
+  //main = document.querySelector('.main');
+  //modalWindow = document.querySelector('.modal-window');
+  detailContainer = document.querySelector('.modal-window');
   color = null;
 
   constructor(handleAddToOrder){
@@ -12,8 +12,8 @@ export class ViewDetails {
 
   renderCarCard({ id, photoUrl, brand, model, price, color, country, year, seats, 'body-type': bodyType, transmission,'engine-capacity': engineCapacity,
                 'fuel-tank':fuelTank, 'max-power':maxPower, 'max-speed':maxSpeed, consumption, 'trunk-volume': trunkVolume}) {    
-    this.modalWindow.innerHTML = ` 
-      <div class="container">
+    this.detailContainer.insertAdjacentHTML('afterbegin',` 
+      <div class="car-container">
         <div class="row">
           <div class="col">
             <div class="row">
@@ -55,12 +55,12 @@ export class ViewDetails {
               </ul>              
             </div>
           <div class="d-flex justify-content-between">
-            <button type="button" class="close-popUp">Close</button>
+            <button type="button" class="close-popUp  btn btn-primary">Close</button>
             <button type="button" class="makeOrder btn btn-primary" data-car-id="${ id }">Make an order</button>
           </div>
         </div>
       </div>
-    `;
+    `);
     this.getMethod();
   }
 
@@ -79,12 +79,17 @@ export class ViewDetails {
 
   hideCard = () => {
     const popUp = document.querySelector('.modal-window')
+    const container = document.querySelector('.car-container')
     popUp.style.display = 'none';
+    container.style.display = 'none';
   }
   
   openPopup = () => {
     const popUp = document.querySelector('.modal-window')
+    const filter = document.querySelector('.filter')
+    filter.style.display = 'none';
     popUp.style.display = 'block';
+
   }
 
   getMethod = () => {
