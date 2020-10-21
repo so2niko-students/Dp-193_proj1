@@ -17,7 +17,6 @@ export class ControllerDetails {
     this.model.car = car;
     this.view.renderCarCard(car);
     this.view.openPopup();
-    console.log(car);
   };
 
   handleAddToOrder = () => {
@@ -25,6 +24,5 @@ export class ControllerDetails {
     this.model.setValue(values);
     const car = this.model.car
     this.notify(this.events.ADD_ORDER, car);
-    console.log(car)
   }
 }
