@@ -70,7 +70,6 @@ export class HeaderView {
       const contactsElem = document.querySelector('#contacts');
       contactsElem.addEventListener('click', this.showContacts);
     }
-}
     clearInput = () => {
       this.inputElem.value = '';
     };
