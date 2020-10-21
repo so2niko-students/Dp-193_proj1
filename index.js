@@ -1,4 +1,5 @@
 const express = require('express');
+const fetch = require('node-fetch');
 const path = require('path');
 const fs = require('fs');
 
@@ -49,8 +50,8 @@ app.post('/', (req, res) => {
     const { phone } = req.body;
     fetch(getRequestBotUrl() + getCallMeMessage(phone));
   } else if (req.body.payloadType === 'confirm_order') {
-    const { car } = req.body;
-    fetch(getRequestBotUrl() + getConfirmOrderMessage(car));
+    const { car, customer } = req.body;
+    fetch(getRequestBotUrl() + getConfirmOrderMessage(car, customer));
   }
 
   res.json(req.body);
