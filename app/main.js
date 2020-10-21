@@ -5,6 +5,8 @@ import { HeaderController } from './components/header/header-controller.js'
 import { ControllerCarsGallery } from './components/cars-gallery/controller-cars-gallery.js';
 import { FilterController } from './components/filter/filter-controller.js';
 import { CallController } from './components/callMe/call-controller.js';
+import { SliderController } from './components/slider/slider-controller.js'
+
 import './css/main.scss';
 
 const publisher = new Publisher();
@@ -14,5 +16,6 @@ const headerController = new HeaderController(publisher.methods);
 const callController = new CallController();
 const carsGallery = new ControllerCarsGallery(publisher.methods);
 const filterController = new FilterController(publisher.methods);
+const sliderController = new SliderController(publisher.methods);
 
 
