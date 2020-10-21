@@ -5,7 +5,7 @@
   z-index: 100;
   background-color: #C4C9D2;
   border-radius: 50px;
-  color: map_get($colors, backgroundColor);
+  color: map-get($colors, backgroundColor);
   padding: 30px;
 
   &__categories {
@@ -23,12 +23,12 @@
       width: 3px;
       border-radius: 1px;
       height: 80%;
-      background-color: map_get($colors, mainColor);
+      background-color: map-get($colors, mainColor);
     }
   }
 
   &__categories-item {
-    background-color: map_get($colors, mainColor);
+    background-color: map-get($colors, mainColor);
     border-radius: 11px;
     width: 45%;
     padding: 3px 10px;
@@ -46,7 +46,7 @@
       right: 0;
       top: 7px;
       border: 8px solid transparent;
-      border-left: 15px solid map_get($colors, backgroundColor);
+      border-left: 15px solid map-get($colors, backgroundColor);
     }
   }
 
@@ -86,7 +86,7 @@
     width: 100%;
     position: absolute;
     z-index: 10;
-    background-color: map_get($colors, mainColor);
+    background-color: map-get($colors, mainColor);
     left: 0;
     border-radius: 0 0 11px 11px;
   }
@@ -110,14 +110,14 @@
 
   &__options-input {
     border-radius: 5px;
-    background-color: map_get($colors, backgroundColor);
+    background-color: map-get($colors, backgroundColor);
     border: none;
     padding: 0 5px;
     transition: .1s;
 
     &:focus {
       outline: none;
-      box-shadow: 0 0 10px map_get($colors, addColor);
+      box-shadow: 0 0 10px map-get($colors, addColor);
     }
   }
 
@@ -149,19 +149,19 @@
     }
 
     &.filter__submit {
-      color: map_get($colors, textMainColor);
-      background-color: map_get($colors, addColor);
+      color: map-get($colors, textMainColor);
+      background-color: map-get($colors, addColor);
       margin-left: 20px;
     }
 
     &.filter__reset {
-      color: map_get($colors, textMainColor);
+      color: map-get($colors, textMainColor);
       background-color: #5F6B81;
     }
 
     &.filter__close {
-      background-color: map_get($colors, mainColor);
-      color: map_get($colors, textMainColor);
+      background-color: map-get($colors, mainColor);
+      color: map-get($colors, textMainColor);
     }
   }
 }
