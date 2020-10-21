@@ -11,20 +11,17 @@ select {
 .color-car {
     display: table;
 }
-.first-color {
-    width: 10px;
-    height: 10px;
+.color-container button {
+    width: 55px;
+    height: 15px;
     display: table-cell;
-}
-.second-color {
-    width: 10px;
-    height: 10px;
-    display: table-cell;
-}
-.third-color {
-    width: 10px;
-    height: 10px;
-    display: table-cell;
+        &:hover {
+            opacity: 0.7;
+        }
+        &:focus {
+            outline: none;
+            border: 3px solid green;
+        }
 }
 .car-container{
     padding: 100px;

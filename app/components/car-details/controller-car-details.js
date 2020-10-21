@@ -8,7 +8,7 @@ export class ControllerDetails {
 
     this.subscribe = subscribe;
     this.notify = notify;
-    this.events = events
+    this.events = events;
 
     this.subscribe(this.events.CAR_DETAILS, this.showCar);
   }
@@ -22,7 +22,7 @@ export class ControllerDetails {
   handleAddToOrder = () => {
     const values = this.view.getValue();
     this.model.setValue(values);
-    const car = this.model.car
+    const car = this.model.car;
     this.notify(this.events.ADD_ORDER, car);
-  }
+  };
 }
