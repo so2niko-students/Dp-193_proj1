@@ -40,20 +40,19 @@ html, body {
 }
 
 .footer{
-  height:120px;
   font-size:14px;
   background-color: map-get($colors, mainColor);
   font-family: map-get($fonts, addFont);
 
   &__text{
-    margin:0px;
+    margin:0;
     font-size:18px;
   }
 }
 
-.main {
+.main{
   flex: 1 0 auto;
-  margin-top:30px;
+  margin-top: 7%;
 }
 
 #root {

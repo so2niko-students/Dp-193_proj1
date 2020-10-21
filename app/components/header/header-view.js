@@ -41,7 +41,7 @@ export class HeaderView {
                 </div>
             
               <div class="" id="navbarSupportedContent">
-                <ul class="d-flex jusify-content-between mx-3">
+                <ul class="d-flex mx-3">
                   <li class="nav-item  header__link " id="partners">
                     <a class="nav-link" href="#">Our Partners</a>
                   </li>

@@ -1,9 +1,8 @@
 @import '../../css/main';
 
 .header {
-  position: sticky;
   width: 100%;
-  background-color: map-get($colors, backgroundHeader) ;
+  background-color: map-get($colors, backgroundHeader);
 
   &__search{
     margin-left: 30%;
