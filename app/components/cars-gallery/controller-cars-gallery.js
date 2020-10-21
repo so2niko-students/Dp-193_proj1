@@ -2,7 +2,7 @@ import { ModelCarsGallery } from './model-cars-gallery.js';
 import { ViewCarsGallery } from './view-cars-gallery.js';
 
 export class ControllerCarsGallery {
-  constructor({notify, events, subscribe}) {
+  constructor({ notify, events, subscribe }) {
     this.model = new ModelCarsGallery();
     this.view = new ViewCarsGallery(this.getMethods);
 
@@ -12,14 +12,14 @@ export class ControllerCarsGallery {
 
     this.subscribe(this.events.SEARCH_MODEL, this.handleFilteredData);
     this.subscribe(this.events.FILTERED_DATA, this.handleFilteredData);
-    this.subscribe(this.events.LOGO_SHOWCARS, this.handleLogoClick); 
-    
+    this.subscribe(this.events.LOGO_SHOWCARS, this.handleLogoClick);
+
     this.model.loadCars(this.handleLoadComponent);
   }
 
-  handleLoadComponent = (cars) => {                          
+  handleLoadComponent = (cars) => {
+    this.handleLoadCarsGallery();
     this.notify(this.events.LOAD_DATA, cars);
-    this.handleLoadCarsGallery();                   
   };
 
   handleLoadCarsGallery = () => {
@@ -28,42 +28,42 @@ export class ControllerCarsGallery {
   };
 
   handleLoadCars = () => {
-    const carsPag = this.model.getCarsPagin();  
+    const carsPag = this.model.getCarsPagin();
     this.view.render(carsPag);
   };
 
   handleLogoClick = () => {
     this.model.clearFilteredCars();
-    const cars = this.model.cars;
+    const allCars = this.model.cars;
     this.handleLoadCarsGallery();
-    this.notify(this.events.RESET_DATA, cars);
+    this.notify(this.events.LOAD_DATA, allCars);
   };
 
   handleFilteredData = (data) => {
-    this.model.page = 1;                          
+    this.model.page = 1;
     const cars = this.model.getFilteredCars(data);
     this.view.render(cars);
   };
 
-  handleCarDetails = (event) => {                       
+  handleCarDetails = (event) => {
     const carId = event.target.dataset.id;
-    if(carId) {
+    if (carId) {
       const car = this.model.getCar(carId);
       this.notify(this.events.CAR_DETAILS, car);
     }
   };
 
   handleFilterButton = () => {
-    this.notify(this.events.SHOW_FILTER);       
+    this.notify(this.events.SHOW_FILTER);
   };
 
-  handleShowAll = () => {                 
-    this.model.clearFilteredCars();                      
+  handleShowAll = () => {
+    this.model.clearFilteredCars();
     const cars = this.model.getCarsPagin();
     this.view.render(cars);
-    this.notify(this.events.RESET_DATA, cars);
+    this.notify(this.events.RESET_DATA, this.model.cars);
   };
-  
+
   getMethods = {
     handleFilterButton: this.handleFilterButton,
     handleShowAll: this.handleShowAll,

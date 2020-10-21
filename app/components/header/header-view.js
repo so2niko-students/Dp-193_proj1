@@ -55,7 +55,7 @@ export class HeaderView {
       this.inputElem = document.querySelector('.header__input');
 
       this.addEvents();
-    }
+    };
 
     addEvents = () => {
       const filterElem = document.querySelector('.header__search');
