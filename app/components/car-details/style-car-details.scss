@@ -1,14 +1,16 @@
 @import '../../css/main.scss';
 
+select {
+    border: none
+}
+
 .list-group-item {
     padding-top: 1px;
     padding-bottom: 1px;
 }
-
 .color-car {
     display: table;
 }
-
 .first-color {
     width: 10px;
     height: 10px;
@@ -27,6 +29,9 @@
 .car-container{
     padding: 100px;
 }
-select {
-    border: none
+.car-img {
+    padding-left: 1px;
+    padding-right: 1px;
 }
+
+
