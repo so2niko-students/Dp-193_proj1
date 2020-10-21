@@ -7,7 +7,6 @@ import { FilterController } from './components/filter/filter-controller.js';
 import { CallController } from './components/callMe/call-controller.js';
 import { ControllerDetails } from './components/car-details/controller-car-details'
 
-
 import './css/main.scss';
 
 const publisher = new Publisher();
