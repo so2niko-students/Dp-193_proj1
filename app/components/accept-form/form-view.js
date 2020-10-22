@@ -1,17 +1,16 @@
 import './form-style.scss';
 
 export class FormView {
-
   main = document.querySelector('main');
-  
-  constructor(handleSubmitForm){
+
+  constructor(handleSubmitForm) {
     this.handleSubmitForm = handleSubmitForm;
   }
-  
+
   submitFormListener = () => {
     const form = document.querySelector('.comfirm-form');
     form.addEventListener('submit', this.handleSubmitForm);
-}
+  }
 
   renderContainer = () => {
     this.main.innerHTML = `<div class="accept-block">
@@ -33,27 +32,24 @@ export class FormView {
   }
 
     renderCarDetails = (cardData) => {
-     const container = document.querySelector('.accept-inform');
-        const carDetailsList = this.addDetails(cardData);
-        container.innerHTML = carDetailsList;
-       
+      const container = document.querySelector('.accept-inform');
+      const carDetailsList = this.addDetails(cardData);
+      container.innerHTML = carDetailsList;
     };
 
     addDetails = (cardData) => {
       let cardDetailsHtml = '';
+      const keys = Object.keys(cardData);
       cardDetailsHtml += `<p>Check that information is correct</p>
             <p> ${cardData.model}</p>
+            <p> ${cardData.brand}</p>
             <ul>`;
-
-      for (const key in cardData) {
-        if (key != "photoUrl" && key != "id") {
-            cardDetailsHtml += `<li>${key}:  ${cardData[key]}</li>`;
-            }
-          }
-          cardDetailsHtml +='</ul>';
-
-          return cardDetailsHtml;
-        };
-   
-  };
-
+      for (let i = 0; i < keys.length; i += 1) {
+        if (keys[i] !== 'brand' && keys[i] !== 'model' && keys[i] !== 'id' && keys[i] !== 'photoUrl') {
+          cardDetailsHtml += `<li>${keys[i]}:  ${cardData[keys[i]]}</li>`;
+        }
+      }
+      cardDetailsHtml += '</ul>';
+      return cardDetailsHtml;
+    };
+}
