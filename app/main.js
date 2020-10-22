@@ -3,7 +3,7 @@ import Publisher from './helpers/publisher.js';
 import { ControllerCarsGallery } from './components/cars-gallery/controller-cars-gallery.js';
 import { FilterController } from './components/filter/filter-controller.js';
 import { HeaderController } from './components/header/header-controller.js';
-import { FormController } from './components/acceptForm/form-controller.js';
+import { FormController } from './components/accept-form/form-controller.js';
 
 import './css/main.scss';
 
