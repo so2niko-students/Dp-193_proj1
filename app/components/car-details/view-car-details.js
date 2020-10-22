@@ -1,17 +1,15 @@
 import './style-car-details.scss';
 
 export class ViewDetails {
-  //main = document.querySelector('.main');
-  //modalWindow = document.querySelector('.modal-window');
   detailContainer = document.querySelector('.modal-window');
-  color = null;
 
-  constructor(handleAddToOrder){
-    this.handleAddToOrder = handleAddToOrder
+  constructor(handleAddToOrder) {
+    this.handleAddToOrder = handleAddToOrder;
   }
 
-  renderCarCard({ id, photoUrl, brand, model, price, color, country, year, seats, 'body-type': bodyType, transmission,'engine-capacity': engineCapacity,
-                'fuel-tank':fuelTank, 'max-power':maxPower, 'max-speed':maxSpeed, consumption, 'trunk-volume': trunkVolume}) {    
+  renderCarCard(data) {
+    const { id, photoUrl, brand, model, price, color, country, year, seats, 'body-type': bodyType, transmission,'engine-capacity': engineCapacity,
+        'fuel-tank':fuelTank, 'max-power':maxPower, 'max-speed':maxSpeed, consumption, 'trunk-volume': trunkVolume} = data;
     this.detailContainer.insertAdjacentHTML('afterbegin',` 
       <div class="car-container">
         <div class="row">
@@ -32,9 +30,7 @@ export class ViewDetails {
                 <li class="list-group-item">Model: ${model}</li>
                 <li class="list-group-item">Price: ${price}</li>
                 <li class="color-container list-group-item">Color: 
-                  <button class="first-color" style="background:${color[0]};"></button>
-                  <button class="second-color" style="background:${color[1]};"></button>
-                  <button class="third-color" style="background:${color[2]};"></button>
+                    ${this.renderColor(color)}
                 </li>
                 <li class="list-group-item">Country: ${country}</li>
                 <li class="list-group-item">Year: ${year}</li>
@@ -42,8 +38,7 @@ export class ViewDetails {
                 <li class="list-group-item">Body-type: ${bodyType}</li>
                 <li class="list-group-item">Transmission:
                   <select class="transmission-container">
-                    <option>${transmission[0]}</option>
-                    <option>${transmission[1]}</option>
+                    ${this.renderTransmission(transmission)}
                   </select>
                 </li>
                 <li class="list-group-item">Engine-capacity: ${engineCapacity}</li>
@@ -55,54 +50,58 @@ export class ViewDetails {
               </ul>              
             </div>
           <div class="d-flex justify-content-between">
-            <button type="button" class="close-popUp  btn btn-primary">Close</button>
-            <button type="button" class="makeOrder btn btn-primary" data-car-id="${ id }">Make an order</button>
+            <button type="button" class="close-popup  btn btn-primary">Close</button>
+            <button type="button" class="make-order btn btn-primary" data-car-id="${ id }">Make an order</button>
           </div>
         </div>
       </div>
     `);
-    this.getMethod();
+    this.addListeners();
   }
 
-  getColor = (event) => {
-    this.color = event.target.style.background;
-  };
+  renderColor = (colors) => colors.map((color) => `
+    <button class="first-color" style="background:${color};"></button>
+ `).join('');
 
-  getValue = () => {
-    const transmission = document.querySelector('.transmission-container');
-
-    return {
-      transmission: transmission.value,
-      color: this.color,
-    };
-  };
+  renderTransmission = (transmissions) => transmissions.map((transmission) => `
+    <option value="${transmission}">${transmission}</option>
+  `).join('');
 
   hideCard = () => {
-    const popUp = document.querySelector('.modal-window')
     const container = document.querySelector('.car-container')
-    popUp.style.display = 'none';
+    this.detailContainer.style.display = 'none';
     container.style.display = 'none';
-  }
-  
+    document.querySelector('button[data-active]').removeAttribute('data-active');
+  };
+
   openPopup = () => {
-    const popUp = document.querySelector('.modal-window')
     const filter = document.querySelector('.filter')
     filter.style.display = 'none';
-    popUp.style.display = 'block';
+    this.detailContainer.style.display = 'block';
+  };
 
-  }
+  handleClickColorButton = (event) => {
+      if (document.querySelector('button[data-active]')) {
+          document.querySelector('button[data-active]').removeAttribute('data-active');
+      }
+      event.target.setAttribute('data-active', true);
+  };
 
-  getMethod = () => {
+  getValues = () => {
+    const color = document.querySelector('button[data-active]').style.background;
+    const transmission = document.querySelector('.transmission-container').value;
+    return {color, transmission};
+  };
+
+  addListeners = () => {
     const colorContainer = document.querySelector('.color-container');
-    colorContainer.addEventListener('click', this.getColor);
-    
-    const makeOrder = document.querySelector('.makeOrder');
-    makeOrder.addEventListener('click', this.handleAddToOrder)
+    colorContainer.addEventListener('click', this.handleClickColorButton);
 
-    const closePopup = document.querySelector('.close-popUp');
-    closePopup.addEventListener('click', this.hideCard)
+    const makeOrder = document.querySelector('.make-order');
+    makeOrder.addEventListener('click', this.handleAddToOrder);
 
-    const popUp = document.querySelector('.container')
+    const closePopup = document.querySelector('.close-popup');
+    closePopup.addEventListener('click', this.hideCard);
   };
 }
 
