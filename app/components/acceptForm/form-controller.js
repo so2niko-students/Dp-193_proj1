@@ -7,8 +7,6 @@ export class FormController {
     this.model = new FormModel();
 
     this.subscribe = subscribe;
-
-    //use git pull to use events for publisherEvents
     //this.events = events;
 
     this.subscribe('ADD_ORDER', this.handleAccept)
@@ -21,12 +19,12 @@ export class FormController {
     this.view.renderCarDetails(cardData);
   };
 
-  handleSubmitForm = (event) => {
+  handleSubmitForm = (event, cardId) => {
     event.preventDefault();
     //this.view.clearErrors();
-
     const { fullName, telephone } = this.model.getFormData(event);
-    this.notify(this.events.SEND_MASSAGE, { fullName, telephone } );
+    //this.notify(this.events.SEND_MASSAGE, { fullName, telephone } );
+    this.model.getCardData({ fullName, telephone }, cardId);
 
     }
  

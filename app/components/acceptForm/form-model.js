@@ -25,8 +25,8 @@ export class FormModel {
     
   };
 
-  sendToBot = () =>{
-    const url = "https://kolimaga.herokuapp.com/";
+  sendToBot = (car,customer) =>{
+    const url = 'https://kolimaga.herokuapp.com/';
     const payload = {
       payloadType: "confirm_order",
       car,

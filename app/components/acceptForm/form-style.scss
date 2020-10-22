@@ -31,7 +31,7 @@
     background-color: rgb(209, 202, 230);
 } 
 
-input[type="text"]{
+.input-text{
     margin: 17px;
     border: 0;
     width: 400px;
@@ -39,7 +39,7 @@ input[type="text"]{
     padding: 9px;
 }
 
-input[type="submit"]{
+.input-submit{
     background-color:  rgb(126, 139, 230);
     box-shadow: 3px 3px 3px rgba(0,0,0,0.2);
     margin: auto;
