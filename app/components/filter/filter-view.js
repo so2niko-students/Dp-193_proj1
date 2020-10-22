@@ -10,7 +10,7 @@ export class FilterView {
 
   render = (data) => {
     this.modalContainer.insertAdjacentHTML('afterbegin', `
-      <form class="filter col-md-6">
+      <form class="filter col-md-8 col-lg-6">
         <ul class="filter__categories">
           ${this.renderCategories(data)}
         </ul>
@@ -36,10 +36,14 @@ export class FilterView {
 
     this.filterForm.querySelectorAll('.filter__categories-name')
       .forEach((categoryItem) => categoryItem.addEventListener('click', this.setActiveItem));
+
+    this.filterForm.addEventListener('click', (event) => event.stopPropagation());
+
+    this.modalContainer.addEventListener('click', this.hideFilter);
   };
 
   renderCategories = (data) => data.map((category) => `
-    <li class="filter__categories-item">
+    <li class="filter__categories-item col-md-5">
       <div class="filter__categories-name">${this.formatCategoryName(category.name)}</div>
       <fieldset class="filter__options-list">
         ${this.renderOptions(category)}
