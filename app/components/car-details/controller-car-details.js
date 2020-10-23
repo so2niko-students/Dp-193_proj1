@@ -24,7 +24,6 @@ export class ControllerDetails {
     const data = this.view.getValues();
     this.model.setValue(data);
     const car = this.model.newCar;
-    console.log(car);
     this.notify(this.events.ADD_ORDER, car);
     this.view.hideCard();
   };
