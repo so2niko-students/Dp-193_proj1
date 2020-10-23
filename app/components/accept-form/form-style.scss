@@ -1,0 +1,68 @@
+@import '../../css/main.scss';
+
+.accept-block{
+    display: flex;
+    background-color: #E6EFF6;
+}
+
+.accept-block h3{
+    text-align: center;
+     font-size: 2em;
+
+}
+.accept-inform{
+    margin: auto;
+}
+.accept-inform p{
+    font-size: 16pt;
+    text-align: center;
+}
+
+.form-block{
+    margin: auto;
+}
+
+.comfirm-form{
+    margin: auto;
+    border-radius: 10px;
+    display: grid;
+    height: fit-content;
+    padding: 20px;
+    background-color: rgb(209, 202, 230);
+} 
+
+.input-text{
+    margin: 17px;
+    border: 0;
+    width: 400px;
+    font-size: 14pt;
+    padding: 9px;
+}
+
+.input-submit{
+    background-color:  rgb(126, 139, 230);
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+    margin: auto;
+    padding: 11px;
+    border: 0;
+}
+
+.accept-inform li{line-height: 1.8;}
+
+.accept-inform ul{
+    margin: auto;
+    padding-bottom: 30px;
+}
+
+.accept-block p{
+   text-align: center;
+   font-size: 16pt;
+}
+
+.vl{
+    border-left: 3px solid rgb(8, 3, 46);
+    left: 50%;
+    opacity: .6;
+    height: 450px;
+    margin: auto;
+  }
