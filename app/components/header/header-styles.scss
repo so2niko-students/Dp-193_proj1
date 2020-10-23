@@ -1,12 +1,11 @@
-@import '../../css/variables';
+@import '../../css/main';
 
 .header {
   width: 100%;
-  z-index: 100;
-  background: $backgroundColor;
+  background-color: map-get($colors, backgroundHeader);
 
   &__search{
-    margin-left: 50%;
+    margin-left: 30%;
     width: 300px;
   }
 
@@ -32,4 +31,9 @@
   }
 }
 
-
+li{
+  list-style: none;
+}
+a{
+  color: map-get($colors, mainColor);
+}
