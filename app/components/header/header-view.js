@@ -15,7 +15,7 @@ export class HeaderView {
 
     render = () => {
       this.headerElem.innerHTML = `
-            <nav class="navbar navbar-expand-lg navbar-light">
+            <nav class="navbar navbar-light">
               <a class="navbar-brand mx-3 header__logo" href="#" data-id="home">
                 <img src="./app/images/logo-1.png" width="85px" class="d-inline-block img-fluid" alt="logo" >
               </a>
@@ -40,9 +40,9 @@ export class HeaderView {
                    </form>
                 </div>
             
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item header__link mx-3" id="partners">
+              <div class="" id="navbarSupportedContent">
+                <ul class="d-flex mx-3">
+                  <li class="nav-item  header__link " id="partners">
                     <a class="nav-link" href="#">Our Partners</a>
                   </li>
                   <li class="nav-item header__link" id="contacts">
@@ -69,8 +69,7 @@ export class HeaderView {
 
       const contactsElem = document.querySelector('#contacts');
       contactsElem.addEventListener('click', this.showContacts);
-    };
-
+    }
     clearInput = () => {
       this.inputElem.value = '';
     };

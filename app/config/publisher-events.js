@@ -9,6 +9,7 @@ const publisherEvents = {
   SHOW_CONTACTS: 'SHOW_CONTACTS',
   ADD_ORDER: 'ADD_ORDER',
   RESET_DATA: 'RESET_DATA',
+  ADD_ORDER: 'ADD_ORDER',
 };
 
 export default publisherEvents;

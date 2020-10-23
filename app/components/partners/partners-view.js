@@ -8,7 +8,6 @@ export class PartnersView {
   main = document.querySelector('.main');
 
   render = () => {
-    console.log(this.links)
     this.main.innerHTML = `
       <h2 class="text-center pt-5">Our Partners</h2>
       <div class="row px-5">
