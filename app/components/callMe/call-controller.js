@@ -15,6 +15,6 @@ export class CallController {
 
   handleFormSubmit = (phoneNumber) => {
     const result = this.model.validation(phoneNumber);
-    // передать данные в функцию Вовы через свою модель
+    this.model.sendData(phoneNumber);
   };
 }

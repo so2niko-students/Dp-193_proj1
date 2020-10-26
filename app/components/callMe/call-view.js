@@ -12,7 +12,7 @@ export class CallView {
       this.contain.innerHTML = `
           <form class="form-hide">
               <p>Fill this form and we will contact with you:</p>
-              <input type="text" class="input-telephone" placeholder="Telephone:">
+              <input type="tel" class="input-telephone" placeholder="Telephone:">
               <button class="call-me-btn">Call Me</button>
           </form>
           <button class="btn"><i class="fa fa-whatsapp"></i></button>
