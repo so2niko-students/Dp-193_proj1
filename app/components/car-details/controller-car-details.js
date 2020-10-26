@@ -26,8 +26,4 @@ export class ControllerDetails {
     this.notify(this.events.ADD_ORDER, car);
     this.view.hideCard();
   };
-
-
-
-
 }

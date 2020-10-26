@@ -37,9 +37,7 @@ export class FilterView {
     this.filterForm.querySelectorAll('.filter__categories-name')
       .forEach((categoryItem) => categoryItem.addEventListener('click', this.setActiveItem));
 
-    this.filterForm.addEventListener('click', (event) => event.stopPropagation());
-
-    this.modalContainer.addEventListener('click', this.hideFilter);
+    this.modalContainer.addEventListener('click', this.handleLayoutClick);
   };
 
   renderCategories = (data) => data.map((category) => `
@@ -118,6 +116,12 @@ export class FilterView {
     this.removeActiveItem();
     this.filterForm.style.display = 'none';
     this.modalContainer.style.display = 'none';
+  };
+
+  handleLayoutClick = (event) => {
+    if (event.target === this.modalContainer) {
+      this.hideFilter();
+    }
   };
 
   resetFormInputs = () => this.filterForm.reset();

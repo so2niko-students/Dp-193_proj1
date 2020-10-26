@@ -1,9 +1,8 @@
 export class ModelDetails {
-
   newCar = null;
 
   setCar(car) {
-   this.newCar = Object.assign({}, car);
+    this.newCar = { ...car };
   }
 
   setValue = (values) => {
@@ -13,4 +12,3 @@ export class ModelDetails {
     };
   };
 }
-
