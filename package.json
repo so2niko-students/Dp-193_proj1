@@ -9,13 +9,7 @@
     "node": "12.x"
   },
   "scripts": {
-    "start": "node ./index.js",
-    "build-scss": "node-sass ./app/css/main.scss -o ./dist",
-    "webpack-dev-server": "webpack-dev-server",
-    "dev": "webpack-dev-server --mode=development",
-    "prod": "webpack --mode=production",
-    "build": "webpack",
-    "lint": "eslint ./app"
+    "start": "node ./index.js"
   },
   "devDependencies": {
     "@babel/core": "7.11.6",
