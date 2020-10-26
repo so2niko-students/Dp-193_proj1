@@ -1,4 +1,4 @@
-import './filter.scss';
+import './filter-styles.scss';
 
 export class FilterView {
   modalContainer = document.querySelector('.modal-window');

@@ -1,4 +1,4 @@
-import './slider.scss';
+import './slider-styles.scss';
 
 export class SliderView {
   sliderContainer = document.querySelector('.main');

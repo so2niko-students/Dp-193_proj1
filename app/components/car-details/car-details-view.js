@@ -1,4 +1,4 @@
-import './style-car-details.scss';
+import './car-details-styles.scss';
 
 export class ViewDetails {
   detailContainer = document.querySelector('.modal-window');

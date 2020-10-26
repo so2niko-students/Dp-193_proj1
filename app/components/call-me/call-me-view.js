@@ -1,4 +1,4 @@
-import './call-styles.scss';
+import './call-me-styles.scss';
 
 export class CallView {
     contain = document.querySelector('.popup-container');

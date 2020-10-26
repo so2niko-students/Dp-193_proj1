@@ -1,4 +1,4 @@
-import './form-style.scss';
+import './confirm-form-style.scss';
 
 export class FormView {
   main = document.querySelector('main');

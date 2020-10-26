@@ -1,5 +1,5 @@
-import { CallView } from './call-view.js';
-import { CallModel } from './call-model.js';
+import { CallView } from './call-me-view.js';
+import { CallModel } from './call-me-model.js';
 
 export class CallController {
   constructor() {
