@@ -8,7 +8,7 @@ export class FormView {
   }
 
   submitFormListener = () => {
-    const form = document.querySelector('.comfirm-form');
+    const form = document.querySelector('.confirm-form');
     form.addEventListener('submit', this.handleSubmitForm);
   }
 
@@ -20,10 +20,10 @@ export class FormView {
                           </div>
                           <div class="form-block">
                                <p>Fill this form down below:</p>
-                               <form class="comfirm-form">
-                                   <input type="text" class="input-text" name="full-name" placeholder="Full name">
-                                   <input type="text" class="input-text" placeholder="Email">
-                                   <input type="text" class="input-text" name="telephone" placeholder="Telephone">
+                               <form class="confirm-form">
+                                   <input type="text" class="input-text" name="full-name" minlength="4" placeholder="Full name*" required>
+                                   <input type="email" class="input-text" placeholder="Email">
+                                   <input type="tel" class="input-text" name="telephone" maxlength="11" minlength="11"  placeholder="Phone number*"  required>
                                    <input type="submit" class = "input-submit" value="Accept">
                                 </form>
                           </div>

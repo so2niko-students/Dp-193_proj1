@@ -1,4 +1,9 @@
 export class FormModel {
+  carData = {}
+
+  setCardData = (carData) => {
+    this.carData = carData;
+  }
   getFormData = (event) => {
     const data = [...event.target].reduce((obj, el) => {
       const dataObj = obj;
@@ -9,7 +14,7 @@ export class FormModel {
     }, {});
     return {
       fullName: data['full-name'],
-      telNumber: data.telephone,
+      telNumber: data['telephone'],
     };
   };
 
@@ -17,7 +22,7 @@ export class FormModel {
     const url = 'https://kolimaga.herokuapp.com/';
     const payload = {
       payloadType: 'confirm_order',
-      car,
+      car: this.carData,
       customer,
     };
 

@@ -13,11 +13,15 @@ export class FormController {
   handleAccept = async (carData) => {
     this.view.renderContainer();
     this.view.renderCarDetails(carData);
+    this.model.setCardData(carData);
   };
 
-  handleSubmitForm = (event, cardId) => {
+  handleSubmitForm = (event) => {
     event.preventDefault();
-    const { fullName, telephone } = this.model.getFormData(event);
-    this.model.getCardData({ fullName, telephone }, cardId);
+    const customer = this.model.getFormData(event);
+    this.model.sendToBot(customer);
   };
+
+
+
 }
