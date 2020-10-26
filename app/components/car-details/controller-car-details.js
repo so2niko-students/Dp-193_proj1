@@ -14,7 +14,6 @@ export class ControllerDetails {
   }
 
   showCar = (car) => {
-    this.model.car = car;
     this.model.setCar(car);
     this.view.renderCarCard(car);
     this.view.openPopup();

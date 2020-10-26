@@ -1,5 +1,4 @@
 export class ModelDetails {
-  car = {};
 
   newCar = null;
 
