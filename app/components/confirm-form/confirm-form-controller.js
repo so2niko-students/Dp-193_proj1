@@ -1,5 +1,5 @@
-import { FormView } from './form-view.js';
-import { FormModel } from './form-model.js';
+import { FormView } from './confirm-form-view.js';
+import { FormModel } from './confirm-form-model.js';
 
 export class FormController {
   constructor({ subscribe, events, notify }) {

@@ -1,5 +1,5 @@
-import { ModelDetails } from './model-car-details.js';
-import { ViewDetails } from './view-car-details.js';
+import { ModelDetails } from './car-details-model.js';
+import { ViewDetails } from './car-details-view.js';
 
 export class ControllerDetails {
   constructor({ subscribe, events, notify }) {
