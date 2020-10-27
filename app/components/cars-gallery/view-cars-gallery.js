@@ -1,4 +1,4 @@
-import './cars-gallery.scss';
+import './cars-gallery-styles.scss';
 
 export class ViewCarsGallery {
   mainContainer = document.querySelector('.main');

@@ -4,11 +4,10 @@ import { PartnersController } from './components/partners/partners-controller.js
 import { HeaderController } from './components/header/header-controller.js'
 import { ControllerCarsGallery } from './components/cars-gallery/controller-cars-gallery.js';
 import { FilterController } from './components/filter/filter-controller.js';
-import { FormController } from './components/accept-form/form-controller.js';
-import { CallController } from './components/callMe/call-me-controller.js';
-import { ControllerDetails } from './components/car-details/controller-car-details';
+import { FormController } from './components/confirm-form/confirm-form-controller.js';
+import { CallController } from './components/call-me/call-me-controller.js';
+import { ControllerDetails } from './components/car-details/car-details-controller.js';
 import { SliderController } from './components/slider/slider-controller.js'
-
 
 import './css/main.scss';
 
