@@ -5,7 +5,7 @@ import { HeaderController } from './components/header/header-controller.js'
 import { ControllerCarsGallery } from './components/cars-gallery/controller-cars-gallery.js';
 import { FilterController } from './components/filter/filter-controller.js';
 import { FormController } from './components/accept-form/form-controller.js';
-import { CallController } from './components/callMe/call-controller.js';
+import { CallController } from './components/callMe/call-me-controller.js';
 import { ControllerDetails } from './components/car-details/controller-car-details';
 import { SliderController } from './components/slider/slider-controller.js'
 
