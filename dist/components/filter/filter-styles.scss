@@ -1,0 +1,173 @@
+@import '../../css/main.scss';
+
+.filter {
+  position: fixed;
+  z-index: 100;
+  background-color: #C4C9D2;
+  border-radius: 50px;
+  color: map-get($colors, backgroundColor);
+  padding: 30px;
+
+  &__categories {
+    position: relative;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: calc(50% - 1.5px);
+      top: calc(10%);
+      width: 3px;
+      border-radius: 1px;
+      height: 80%;
+      background-color: map-get($colors, mainColor);
+    }
+    @media screen and (max-width: 767px){
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &__categories-item {
+    background-color: map-get($colors, mainColor);
+    border-radius: 11px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__categories-name {
+    font-size: 17px;
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 7px;
+      border: 8px solid transparent;
+      border-left: 15px solid map-get($colors, backgroundColor);
+    }
+  }
+
+  &__categories-item--active {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+    border-radius: 11px 11px 0 0;
+    .filter__options-list {
+      display: block;
+      box-shadow: 0 5px 5px rgba(0, 0, 0, 1);
+    }
+
+    .filter__categories-name::after {
+      content: '';
+      position: absolute;
+      animation-name: rotate;
+      animation-duration: .3s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  @keyframes rotate {
+    from {
+      right: 0;
+      top: 7px;
+      transform: rotateZ(0deg);
+    }
+    to {
+      right: 6px;
+      top: 13px;
+      transform: rotateZ(90deg);
+    }
+  }
+
+  &__options-list {
+    display: none;
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+    background-color: map-get($colors, mainColor);
+    left: 0;
+    border-radius: 0 0 11px 11px;
+  }
+
+  &__options-label {
+    display: inline-block;
+    margin: 10px;
+  }
+
+  &__options-label-number {
+    width: 100%;
+    padding-right: 30px;
+    display: flex;
+    justify-content: space-around;
+    font-style: italic;
+  }
+
+  &__options-check {
+    margin-right: 5px;
+  }
+
+  &__options-input {
+    border-radius: 5px;
+    background-color: map-get($colors, backgroundColor);
+    border: none;
+    padding: 0 5px;
+    transition: .1s;
+    width: 80%;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 10px map-get($colors, addColor);
+    }
+  }
+
+  &__options-input {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__button {
+    border-radius: 11px;
+    font-size: 20px;
+    padding: 5px 20px;
+    border: none;
+    cursor: pointer;
+    transition: .2s;
+    color: map-get($colors, textMAinColor);
+
+    &:hover {
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &.filter__submit {
+      color: map-get($colors, textMainColor);
+      background-color: map-get($colors, addColor);
+      margin-left: 20px;
+    }
+
+    &.filter__reset {
+      color: map-get($colors, textMainColor);
+      background-color: #5F6B81;
+    }
+
+    &.filter__close {
+      background-color: map-get($colors, mainColor);
+      color: map-get($colors, textMainColor);
+    }
+  }
+}
