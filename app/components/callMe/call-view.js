@@ -36,4 +36,16 @@ export class CallView {
     handleChange = (ev) => {
       this.inputValue = ev.target.value;
     };
+
+    closeForm = (ev) => {
+      const form = document.querySelector('.form-show');
+      alert("we will write to you in Telegram within 10 minutes");
+      form.className = 'form-hide';
+      ev.preventDefault();
+    };
+
+    eventCloseForrForm = () => {
+      const form = document.querySelector('.form-show');
+      form.addEventListener('submit', closeForm);
+    }
 }

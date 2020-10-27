@@ -15,6 +15,8 @@ export class CallController {
 
   handleFormSubmit = (phoneNumber) => {
     const result = this.model.validation(phoneNumber);
-    this.model.sendData(phoneNumber);
+    this.view.eventCloseForrForm();
+    this.model.sendData(result);
+    
   };
 }
