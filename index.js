@@ -12,7 +12,7 @@ const {
 const app = express();
 const PORT = process.env.PORT || 80;
 
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.json());
 
 app.get('/', (req, res) => {
