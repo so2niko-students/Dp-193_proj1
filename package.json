@@ -14,7 +14,8 @@
     "dev": "webpack-dev-server --mode=development",
     "prod": "webpack --mode=production",
     "build": "webpack",
-    "lint": "eslint ./app"
+    "lint": "eslint ./app",
+    "build-scss": "node-sass ./app/css/main.scss -o ./dist"
   },
   "devDependencies": {
     "@babel/core": "7.11.6",
