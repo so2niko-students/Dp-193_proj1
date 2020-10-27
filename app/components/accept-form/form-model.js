@@ -16,7 +16,7 @@ export class FormModel {
     }, {});
     return {
       fullName: data['full-name'],
-      telNumber: data['telephone'],
+      telNumber: data.telephone,
     };
   };
 
