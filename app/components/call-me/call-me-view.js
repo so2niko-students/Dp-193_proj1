@@ -40,12 +40,12 @@ export class CallView {
     closeForm = (ev) => {
       const form = document.querySelector('.form-show');
       alert("we will write to you in Telegram within 10 minutes");
-      form.classlist.add('form-hide');
+      form.className = 'form-hide';
       ev.preventDefault();
     };
 
     eventCloseForrForm = () => {
       const form = document.querySelector('.form-show');
-      form.addEventListener('submit', closeForm);
+      form.addEventListener('submit', this.closeForm);
     }
 }
